@@ -1,0 +1,200 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: rgba(243, 251, 241, 0.78);
+  font-family: roboto;
+  font-weight: 300;
+  letter-spacing: 0.7pt;
+  color: rgba(90, 100, 125, 0.8);
+  line-height: 1.2em;
+}
+
+/* NAVIGATION BAR FORMATTING */
+#nav-wrapper {
+  position: fixed;
+  left: 0px;
+  top: 0px;
+  bottom: 0px;
+  background-color: rgba(245, 237, 237, 0.59);
+  width: 120px;
+}
+
+#main-navigation {
+  display: block;
+}
+
+#nav-wrapper:hover #main-navigation {
+  display: block;
+}
+
+#main-navigation li {
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+/* MAIN CONTAINER FORMATTING */
+
+#wrapper {
+  overflow: hidden;
+  padding: 1%;
+  width: 70%;
+  margin: 20px auto;
+  border-radius: 2px;
+  background: rgba(175, 175, 175, 0.1) none repeat scroll 0% 0%;
+}
+
+#left-container {
+  width: 30%;
+  float: left;
+  margin-right: 5%;
+}
+
+#right-container {
+  width: 65%;
+  float: left;
+}
+
+#footer {
+  float: left;
+  width: 100%;
+}
+
+/* HEADER FORMATTINGS */
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: Open Sans;
+  font-weight: 400;
+  margin-top: 0px;
+}
+
+h1 {
+  font-size: 28px;
+  line-height: 1.8em;
+  color: #D55;;
+}
+
+h2 {
+  font-size: 24px;
+  line-height: 1.5em;
+}
+
+h3 {
+  font-size: 20px;
+  line-height: 1.3em;
+}
+
+h4 {
+  font-size: 16px;
+  line-height: 1.1em;
+}
+
+/* LINK FORMATTING */
+
+a {
+  color: rgba(60, 2, 2, 0.5);
+  text-decoration: none;
+}
+
+a:visited {
+  color: rgba(60, 2, 20, 0.5);
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* TOOLS */
+
+.unbulleted_list {
+  list-style: none;
+  padding-left: 0px;
+}
+
+a.icon_wrapper:hover {
+  color: rgba(60, 2, 2, 0.8);;
+}
+
+/* GENERAL BOX FORMATTING */
+
+.shadowed-box {
+  box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.2);
+}
+
+.centered-text {
+  text-align: center;
+}
+
+.card_block {
+  margin: 0px auto 20px;
+  width: 100%;
+  background-color: white;
+  border-radius: 5px;
+  padding: 15px;
+}
+
+/* PRESENTATION BOX FORMATTING */
+
+.main_title {
+  margin-bottom: 0px;
+}
+
+.main_subtitle {
+  margin-top: 0px;
+}
+
+.main_title_block * {
+
+}
+
+.img_wrapper {
+  margin-bottom: 0px;
+}
+
+.top_img {
+  height: 100px;
+  width: 100px;
+}
+
+.img-circle {
+  border-radius: 50%;
+}
+
+/* SOCIAL BOX FORMATTING */
+
+#social-list a {
+  display: inline-block;
+  text-align: bottom;
+}
+
+/* CITY BOX FORMATTING */
+
+.city_img {
+  height: 100px;
+  width: 100px;
+}
+
+#favorites-cities-box h4, #favorites-cities-box p {
+  text-align: left;
+  padding-left: 2%;
+}
+
+/* ABOUT BOX */
+
+#about-box {
+  position: relative;
+  padding-right: 35%;
+}
+
+#share-list {
+  position: absolute;
+  right: 0px;
+  bottom: 10%;
+}
+
+#share-list > li {
+  width: 80px;
+  display: inline-block;
+  font-size: 25px;
+}
