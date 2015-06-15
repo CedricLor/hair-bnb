@@ -1,140 +1,72 @@
-    <div id="nav-wrapper">
-      <nav id="main-navigation" class="centered-text">
-      <ul class="unbulleted_list">
-        <li>
-          <a href="#presentation-box" class="icon_wrapper">
-            <i class="fa fa-bomb fa-3x"></i>
-          </a>
-        </li>
-        <li>
-          <a href="#keep-in-touch-box" class="icon_wrapper">
-            <i class="fa fa-users fa-3x"></i>
-          </a>
-        </li>
-        <li>
-          <a href="#favorites-cities-box" class="icon_wrapper">
-            <i class="fa fa-cubes fa-3x"></i>
-          </a>
-        </li>
+<div id="wrapper">
+  <div id="left-container">
+    <div id="presentation-box" class="card_block shadowed-box centered-text">
+      <div class="img_wrapper"> <%= image_tag( @user.picture, class: "top_img img-circle")%>
+      </div>
+      <div class="main_title_block">
+        <h1 class="main_title"><%= @user.first_name + " " +  @user.last_name %></h1>
+        <h4 class="main_subtitle"><%= @user.email %></h4>
+      </div>
+      <div class="desc_wrapper">
+        <p><%= @user.description %></p>
+      </div>
+    </div>
+    <div id="keep-in-touch-box" class="card_block shadowed-box centered-text">
+      <h3>My rating</h3>
+      <ul id="social-list" class="unbulleted_list">
+        <li><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-o"></i></li>
       </ul>
-      </nav>
     </div>
-
-    <div id="wrapper">
-      <div id="left-container">
-        <div id="presentation-box" class="card_block shadowed-box centered-text">
-          <div class="img_wrapper">
-            <%= image_tag("<%= @user.picture %>", class: "menu_icon") %>
-            <!--<img src="images/image_fb.jpg" class="top_img img-circle">-->
-          </div>
-          <div class="main_title_block">
-            <h1 class="main_title"><%= @user.first_name @user.last_name %></h1>
-            <!--<h1 class="main_title">Cedric Lor</h1>-->
-            <h4 class="main_subtitle">Y<%= @user.email %></h4>
-            <!--<h4 class="main_subtitle">Your Best Choice</h4>-->
-          </div>
-          <div class="desc_wrapper">
-            <p><%= @user.description %></p>
-            <!--<p>A weird Frenchman, located temporarily in Bruxelles, doing some awesome coding stuff, with an awersome load of chicks and dudes, in an awesome Wagon!!!</p>
-            <p>Will not always be like that!!!</p>-->
-          </div>
-        </div>
-        <div id="keep-in-touch-box" class="card_block shadowed-box centered-text">
-          <h3>Keep in touch!</h3>
-          <ul id="social-list" class="unbulleted_list">
-            <li>
-              <i class="fa fa-facebook"></i>
-              <a href="https://www.facebook.com/cedric.lor.5" target="_blank">Facebook</a>
-            </li>
-            <li>
-              <i class="fa fa-twitter"></i>
-              <a href="https://twitter.com/LeVraiSDB?lang=fr" target="_blank">Twitter</a>
-            </li>
-            <li>
-              <i class="fa fa-instagram"></i>
-              <a href="https://instagram.com" target="_blank">Instagram</a>
-            </li>
-            <li>
-              <i class="fa fa-linkedin"></i>
-              <a href="https://www.linkedin.com/profile/view?id=268403327&trk=nav_responsive_tab_profile" target="_blank">LinkedIn</a>
-            </li>
-          </ul>
-        </div>
-      </div>
-      <div id="right-container">
-        <div id="favorites-cities-box" class="card_block shadowed-box centered-text">
-          <h3>My favorite cities</h3>
-          <table width="100%">
-            <tr>
-              <td>
-                <img alt="Paris" src="images/paris.jpg" class="city_img">
-              </td>
-              <td>
-                <h4>Paris</h4>
-                <p>Paris is the capital city of France. It is located in France and France is surrounding it. It is populated by French people.</p>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <img alt="Rio de Janeiro" src="images/rio.jpg" class="city_img">
-              </td>
-              <td>
-                <h4>Rio de Janeiro</h4>
-                <p>Rio de Janeiro is the former capital city of Brazil. It is located in Brazil and Brazil is surrounding it. It is populated by Brazilian people.</p>
-              </td>
-            </tr>            <tr>
-              <td>
-                <img alt="Bruxelles" src="images/bruxelles.jpg" class="city_img">
-              </td>
-              <td>
-                <h4>Bruxelles</h4>
-                <p>Bruxelles is the capital city of Belgium. It is located in Belgium and Belgium is surrounding it. It is populated by Belgian people.</p>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <img alt="Roma" src="images/roma.jpg" class="city_img">
-              </td>
-              <td>
-                <h4>Roma</h4>
-                <p>Roma is the capital city of the Roman Empire. It is located in Italy and Italy is surrounding it. It is populated by Romans.</p>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <img alt="Marseille" src="images/marseille.jpg" class="city_img">
-              </td>
-              <td>
-                <h4>Marseille</h4>
-                <p>Marseille is the capital city of nothing. It is located in Provence and Provence is surrounding it. It is populated by... nobody knows.</p>
-              </td>
-            </tr>
-          </table>
-        </div>
-      </div>
-
-      <div id="footer">
-        <div id="about-box" class="card_block shadowed-box">
-          <h3>About this page</h3>
-          <p>This page has been coded during the front-end kit <a href="http://lewagon.org">@LeWagon</a> and that was probably the best experience of my entire life.</p>
-          <ul id="share-list" class="unbulleted_list">
-            <li>
-              <a href="#" class="icon_wrapper">
-                <i class="fa fa-heartbeat fa-1x"></i>
-              </a>
-            </li>
-            <li>
-              <a href="#" class="icon_wrapper">
-                <i class="fa fa-paper-plane-o fa-1x"></i>
-              </a>
-            </li>
-            <li>
-              <a href="#" class="icon_wrapper">
-                <i class="fa fa-bullseye fa-1x"></i>
-              </a>
-            </li>
-          </ul>
-        </div>
-      </div>
-
+  </div>
+  <div id="right-container">
+    <div id="favorites-cities-box" class="card_block shadowed-box centered-text">
+      <h3>My reviews</h3>
+      <table width="100%">
+        <tr>
+          <td>
+            <%= image_tag "paris.jpg", class: "city_img"%>
+          </td>
+          <td>
+            <h4>Paris</h4>
+            <p>Paris is the capital city of France. It is located in France and France is surrounding it. It is populated by French people.</p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <%= image_tag "rio.jpg", class: "city_img"%>
+          </td>
+          <td>
+            <h4>Rio de Janeiro</h4>
+            <p>Rio de Janeiro is the former capital city of Brazil. It is located in Brazil and Brazil is surrounding it. It is populated by Brazilian people.</p>
+          </td>
+        </tr>            <tr>
+          <td>
+            <%= image_tag "bruxelles.jpg", class: "city_img"%>
+          </td>
+          <td>
+            <h4>Bruxelles</h4>
+            <p>Bruxelles is the capital city of Belgium. It is located in Belgium and Belgium is surrounding it. It is populated by Belgian people.</p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <%= image_tag "roma.jpg", class: "city_img"%>
+          </td>
+          <td>
+            <h4>Roma</h4>
+            <p>Roma is the capital city of the Roman Empire. It is located in Italy and Italy is surrounding it. It is populated by Romans.</p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <%= image_tag "marseille.jpg", class: "city_img"%>
+          </td>
+          <td>
+            <h4>Marseille</h4>
+            <p>Marseille is the capital city of nothing. It is located in Provence and Provence is surrounding it. It is populated by... nobody knows.</p>
+          </td>
+        </tr>
+      </table>
     </div>
+  </div>
+</div>
