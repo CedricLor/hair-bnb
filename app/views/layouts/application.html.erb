@@ -3,10 +3,36 @@
 <head>
   <title>HairBnb</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,700|Roboto:400,500,300"><!-- TO BE RECODED WITH RAILS HELPERS -->
+  <!-- <link rel="stylesheet" href="style.css"> -->
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
+
+  <div id="nav-wrapper">
+      <nav id="main-navigation" class="centered-text">
+      <ul class="unbulleted_list">
+        <li>
+          <a href="#presentation-box" class="icon_wrapper">
+            <i class="fa fa-bomb fa-2x"></i>
+          </a>
+        </li>
+        <li>
+          <a href="#keep-in-touch-box" class="icon_wrapper">
+            <i class="fa fa-users fa-2x"></i>
+          </a>
+        </li>
+        <li>
+          <a href="#favorites-cities-box" class="icon_wrapper">
+            <i class="fa fa-cubes fa-2x"></i>
+          </a>
+        </li>
+      </ul>
+      </nav>
+    </div>
+
 
 <%= yield %>
 
