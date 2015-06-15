@@ -107,12 +107,12 @@ a:hover {
 
 /* TOOLS */
 
-.unbulleted_list {
+.unbulleted-list {
   list-style: none;
   padding-left: 0px;
 }
 
-a.icon_wrapper:hover {
+a.icon-wrapper:hover {
   color: rgba(60, 2, 2, 0.8);;
 }
 
@@ -126,7 +126,7 @@ a.icon_wrapper:hover {
   text-align: center;
 }
 
-.card_block {
+.card-block {
   margin: 0px auto 20px;
   width: 100%;
   background-color: white;
@@ -142,23 +142,23 @@ a.icon_wrapper:hover {
 
 /* PRESENTATION BOX FORMATTING */
 
-.main_title {
+.main-title {
   margin-bottom: 0px;
 }
 
-.main_subtitle {
+.main-subtitle {
   margin-top: 0px;
 }
 
-.main_title_block * {
+.main-title-block * {
 
 }
 
-.img_wrapper {
+.img-wrapper {
   margin-bottom: 0px;
 }
 
-.top_img {
+.top-img {
   height: 100px;
   width: 100px;
 }
@@ -176,7 +176,7 @@ a.icon_wrapper:hover {
 
 /* CITY BOX FORMATTING */
 
-.city_img {
+.city-img {
   height: 100px;
   width: 100px;
 }
