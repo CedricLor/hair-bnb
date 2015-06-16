@@ -8,7 +8,7 @@
   <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= stylesheet_link_tag "http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css", media: 'all', 'data-turbolinks-track' => true %>
   <%= stylesheet_link_tag "http://fonts.googleapis.com/css?family=Open+Sans:400,300,700|Roboto:400,500,300", media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application' , 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 
@@ -20,9 +20,6 @@
   <% end -%>
   </div>
 
-  <div class="centered-text shadowed-box header">
-    <h1>Hair B'n'B</h1>
-  </div>
 
   <%= render "shared/navbar" %>
   <%#= render 'shared/side_bar' %>
