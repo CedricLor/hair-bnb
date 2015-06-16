@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
+source 'https://rails-assets.org' # required to download raisl-assets-underscore
 
 # Additional gemfiles for Heroku
 ruby '2.2.2'
@@ -23,7 +24,10 @@ gem 'coffee-rails', '~> 4.1.0'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
-gem 'turbolinks'
+# gem 'turbolinks'
+# COMMENTED OUT FOR THE PURPOSE OF MAKING GEOCODE WORK PROPERLY
+# ADD THE FOLLOWING LINE TO application.js IF YOU WANT TO HAVE TURBOLINKS WORKS AGAIN
+# //= require turbolinks
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
@@ -49,6 +53,11 @@ gem 'figaro'
 # Image Magick and PaperClip
 gem 'aws-sdk', '< 2.0'
 gem 'paperclip'
+
+# Geolocation stuffs
+gem 'geocoder'
+gem 'gmaps4rails'
+gem 'rails-assets-underscore'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
