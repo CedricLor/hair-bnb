@@ -1,5 +1,11 @@
 class AccomodationsController < ApplicationController
   def create
+    @accomodation = Accomodation.new(accomodations_params)
+    @accomodation.accomodates = @accomodation.accomodates.to_i
+    @accomodation.night_rate = @accomodation.night_rate.to_i
+    @accomodation.user_id = @accomodation.user_id.to_i
+    @accomodation.save
+    redirect_to accomodations_path
   end
 
   def new
@@ -26,4 +32,24 @@ class AccomodationsController < ApplicationController
 
   def destroy
   end
+
+  private
+
+  def accomodations_params
+    params.require(:accomodation).permit(:accomodates, :description, :night_rate, :address, :user_id)
+  end
+
+  def convert_params
+    @accomodation.accomodates = @accomodation.accomodates.to_i
+    @accomodation.night_rate = @accomodation.night_rate.to_i
+    @accomodation.user_id = @accomodation.user_id.to_i
+  end
 end
+
+# accomodates -> integer
+# description -> text
+# night_rate -> integer
+# address -> string
+# owner_id -> integer
+# latitude -> float
+# longitude -> float
