@@ -1,0 +1,90 @@
+// Place all the styles related to the StaticPages controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+///style
+
+/* thanks to this import, we only need to link html to style.css -> like requiring */
+
+body {
+  font-family: 'Open Sans', sans-serif;
+  color: #141414;
+}
+h1, h2, h3 {
+  font-family: 'Montserrat', sans-serif;
+}
+
+.bluebg {
+  background-color: white;
+  color: black;
+  margin: 0;
+  padding: 10px;
+}
+
+h2 {
+  text-align: center;
+  font-size: 20px;
+}
+
+p {
+  text-align: center;
+  font-size: 14px;
+}
+
+img {
+  width: 100px;
+}
+
+.card {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.whitebg-textcenter {
+  text-align: center;
+  background-color: grey;
+  color: black;
+  padding-top: 5%;
+  padding-bottom: 5%;
+}
+
+
+///banner
+
+.banner {
+  background-image: url("banner.jpg");
+  background-color: grey;
+  color: black;
+  padding: 200px 0px;
+}
+
+#bannerimage {
+  width: 100%;
+}
+
+.bannerh1 {
+  text-align: center;
+  font-size: 50px;
+}
+
+.bannerp {
+  text-align: center;
+  font-size: 20px;
+}
+
+///footer
+
+.footer {
+  text-align: center;
+  background-color: black;
+  color: #DCDCDC;
+  padding: 10px;
+}
+
+.list-inline li {
+  text-align: center;
+  font-size: 40px;
+  padding-right: 2%;
+  margin: 5px;
+}
+
