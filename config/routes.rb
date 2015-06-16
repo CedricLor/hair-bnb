@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   get 'static_pages/help'
 
   resources :users
+  resources :accomodations
 
   root 'static_pages#home'
 
