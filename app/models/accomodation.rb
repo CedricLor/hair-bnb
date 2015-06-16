@@ -11,6 +11,9 @@ class Accomodation < ActiveRecord::Base
   validates :accomodates,
               presence: true,
               numericality: { only_integer: true }
+  validates :night_rate,
+              presence: true,
+              numericality: { only_integer: true }
   validates :address,
               presence: true
 end
