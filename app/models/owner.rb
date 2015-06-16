@@ -1,3 +1,3 @@
 class Owner < User
-  has_many :accomodations, counter_cache: true
+  has_many :accomodations
 end

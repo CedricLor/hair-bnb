@@ -13,9 +13,13 @@ class AccomodationsController < ApplicationController
   end
 
   def update
+    @accomodation = Accomodation.find(params[:id])
+    @accomodation.update(accomodations_params)
+    redirect_to @accomodation
   end
 
   def edit
+    @accomodation = Accomodation.find(params[:id])
   end
 
   def index

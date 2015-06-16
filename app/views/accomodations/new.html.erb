@@ -1,59 +1,16 @@
 <div class="container text-center">
   <div class="row">
-    <div class="col-xs-12 text-left">
-      <h1>Accomodations#new</h1>
-        <%= simple_form_for(@accomodation, html: { multipart: true }) do |f| %>
-          <%= f.error_notification %>
-          <div>
-            <span>
-              <%= f.label :address %>
-            </span>
-            <span>
-              <%= f.text_field :address %>
-            </span>
-          </div>
-          <div>
-            <span>
-            <%= f.label :description %>
-            </span>
-            <span>
-            <%= f.text_area :description, size: "60x12" %>
-            </span>
-          </div>
-          <div>
-            <span>
-            <%= f.label :accomodates %>
-            </span>
-            <span>
-            <%= f.text_field :accomodates %>
-            </span>
-          </div>
-          <div>
-            <span>
-            <%= f.label :night_rate %>
-            </span>
-            <span>
-            <%= f.text_field :night_rate %>
-            </span>
-          </div>
-          <div>
-            <span>
-            <%= f.label :user_id %>
-            </span>
-            <span>
-            <%= f.text_field :user_id %>
-            </span>
-          </div>
-          <div>
-            <span>
-            <%= f.submit "Post", class: "btn btn-primary" %>
-            </span>
-          </div>
-        <% end %>
-        <br>
-        <div>
-          <%= link_to "Back to Accomodation List", accomodations_path, class: "btn btn-primary" %>
-        </div>
+    <div class="col-xs-12 col-sm-6 col-sm-offset-3">
+      <h1>
+        Add an accomodation
+      </h1>
+      <%= render 'shared/accomodation_form' %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12 col-sm-6 col-sm-offset-3">
+      <br><br>
+      <%= link_to "Back to Accomodation List", accomodations_path %>
     </div>
   </div>
 </div>

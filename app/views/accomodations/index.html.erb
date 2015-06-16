@@ -7,6 +7,7 @@
         <div>
           <p><%= link_to(accomodation.description, accomodation_path(accomodation)) %></p>
           <p><%= "#{accomodation.night_rate}€" %></p>
+          <p><%=  link_to("Update this accomodation", edit_accomodation_path(accomodation)) %></p>
         </div>
       <% end %>
     </div>
