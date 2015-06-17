@@ -1,9 +1,12 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update]
 
+  def index
+    @users = User.all
+  end
+
   def show
-    # @user = User.find(params[:id])
-    @user_accomodations = @user.accomodations # nesting accomodations OWNED by the user
+    @user_owned_accomodations = @user.accomodations # nesting accomodations OWNED by the user
     @new_user_accomodation = Accomodation.new # adding possibility to user to add
     # a new accomodation directly from its profile page
   end
@@ -15,11 +18,9 @@ class UsersController < ApplicationController
   end
 
   def edit
-    # @user = User.find(params[:id])
   end
 
   def update
-    # @user = User.find(params[:id])
     @user.update(user_params)
     redirect_to @user
   end
@@ -32,5 +33,10 @@ class UsersController < ApplicationController
 
   def set_user
     @user = User.find(params[:id])
+    # if User.find(params[:id])
+    #   return @user = User.find(params[:id])
+    # else
+    #   flash[:alert] = "Unable to find user with id number #{params[:id]}!"
+    # end
   end
 end

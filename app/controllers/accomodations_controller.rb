@@ -1,11 +1,10 @@
 class AccomodationsController < ApplicationController
+  before_action :set_user, only: [:create, :destroy]
+
   def create
-    @accomodation = Accomodation.new(accomodations_params)
-    @accomodation.accomodates = @accomodation.accomodates.to_i
-    @accomodation.night_rate = @accomodation.night_rate.to_i
-    @accomodation.user_id = @accomodation.user_id.to_i
+    @accomodation = @user.accomodations.build(accomodations_params)
     @accomodation.save
-    redirect_to accomodations_path
+    redirect_to user_path(@user)
   end
 
   def new
@@ -15,7 +14,7 @@ class AccomodationsController < ApplicationController
   def update
     @accomodation = Accomodation.find(params[:id])
     @accomodation.update(accomodations_params)
-    redirect_to @accomodation
+    redirect_to user_path(@user)
   end
 
   def edit
@@ -38,23 +37,21 @@ class AccomodationsController < ApplicationController
     if Accomodation.find(params[:id])
       @accomodation = Accomodation.find(params[:id])
       @accomodation.destroy
-      redirect_to accomodations_path # redirect to redraft upon setting nested routes
+      redirect_to user_path(@user)
     else
       flash[:alert] = "The accomodation that you are trying to delete has already been delete. Refresh your navigator!"
-      redirect_to accomodations_path # redirect to redraft upon setting nested routes
+      redirect_to user_path(@user)
     end
   end
 
   private
 
   def accomodations_params
-    params.require(:accomodation).permit(:accomodates, :description, :night_rate, :address, :user_id)
+    params.require(:accomodation).permit(:accomodates, :description, :night_rate, :address)
   end
 
-  def convert_params
-    @accomodation.accomodates = @accomodation.accomodates.to_i
-    @accomodation.night_rate = @accomodation.night_rate.to_i
-    @accomodation.user_id = @accomodation.user_id.to_i
+  def set_user
+    @user = User.find(params[:user_id])
   end
 end
 
