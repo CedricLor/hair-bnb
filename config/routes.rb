@@ -10,7 +10,9 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :accomodations, only: [:index, :show]
+  resources :accomodations, only: [:index, :show] do
+    resources :bookings, only: [:new, :show, :create]
+  end
 
   resources :accomodations do
     resources :photos, only: [:new, :create]
