@@ -1,6 +1,8 @@
 <div class="container-fluid">
   <div class="row">
-    <%= image_tag("flat_1.jpg", class: "full-width", height: "450") %>
+    <% @accomodation.photos.each do |photo| %>
+    <%= image_tag photo.picture.url(:medium), class: "img-thumbnail", height: "300" %>
+    <% end %>
   </div>
 </div>
 
@@ -32,6 +34,11 @@
         <i class="fa fa-bed fa-2x"></i>
         1 Bed
       </li>
+  </div>
+</div>
+<div class="container">
+  <div class="row">
+
   </div>
 </div>
 

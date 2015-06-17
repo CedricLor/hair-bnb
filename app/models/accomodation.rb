@@ -1,4 +1,5 @@
 class Accomodation < ActiveRecord::Base
+  has_many :photos
   belongs_to :user
   has_many :bookings, dependent: :destroy
   # belongs_to :user, class_name: "Owner", foreign_key: "owner_id"
