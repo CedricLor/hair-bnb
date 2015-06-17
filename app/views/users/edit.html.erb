@@ -8,14 +8,14 @@
         <h4 class="main-subtitle"> email </h4>
       </div>
       <div class="desc-wrapper">
-<%= simple_form_for @user do |f| %>
-<%= image_tag @user.picture, class:"top-img img-circle" %>
-  <%= f.input :first_name, label: @user.first_name %>
-  <%= f.input :last_name, label: @user.last_name %>
-  <%= f.input :email, placeholder: @user.email %>
-  <%= f.input :description, placeholder: @user.description %>
-  <%= f.button :submit %>
-<% end %>
+      <%= simple_form_for @user do |f| %>
+        <%= image_tag @user.picture, class:"top-img img-circle" %>
+        <%= f.input :first_name, label: @user.first_name %>
+        <%= f.input :last_name, label: @user.last_name %>
+        <%= f.input :email, placeholder: @user.email %>
+        <%= f.input :description, placeholder: @user.description %>
+        <%= f.button :submit %>
+      <% end %>
       </div>
     </div>
   </div>
