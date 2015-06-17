@@ -4,8 +4,11 @@ Rails.application.routes.draw do
 
   get 'static_pages/help'
 
-  resources :users
-  resources :accomodations
+  resources :users do
+    resources :accomodations
+  end
+
+  resources :accomodations, only: [:index, :show]
 
   root 'static_pages#home'
 
