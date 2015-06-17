@@ -1,5 +1,19 @@
 Rails.application.routes.draw do
 
+  get 'bookings/create'
+
+  get 'bookings/new'
+
+  get 'bookings/update'
+
+  get 'bookings/edit'
+
+  get 'bookings/destroy'
+
+  get 'bookings/index'
+
+  get 'bookings/show'
+
   get 'static_pages/home'
 
   get 'static_pages/help'
