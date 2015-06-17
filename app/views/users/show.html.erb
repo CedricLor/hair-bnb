@@ -27,6 +27,9 @@
         <div class="desc-wrapper">
           <p><%= @user.description %></p>
         </div>
+        <div>
+          <%= link_to "Edit profile", edit_user_path(@user) %>
+        </div>
       </div>
       <div id="keep-in-touch-box" class="card-block shadowed-box">
         <h3>My rating</h3>
