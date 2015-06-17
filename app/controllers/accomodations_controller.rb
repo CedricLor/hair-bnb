@@ -35,6 +35,14 @@ class AccomodationsController < ApplicationController
   end
 
   def destroy
+    if Accomodation.find(params[:id])
+      @accomodation = Accomodation.find(params[:id])
+      @accomodation.destroy
+      redirect_to accomodations_path # redirect to redraft upon setting nested routes
+    else
+      flash[:alert] = "The accomodation that you are trying to delete has already been delete. Refresh your navigator!"
+      redirect_to accomodations_path # redirect to redraft upon setting nested routes
+    end
   end
 
   private
