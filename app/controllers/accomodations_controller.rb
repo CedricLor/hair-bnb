@@ -14,7 +14,7 @@ class AccomodationsController < ApplicationController
   def update
     @accomodation = Accomodation.find(params[:id])
     @accomodation.update(accomodations_params)
-    redirect_to user_path(@user)
+    redirect_to @accomodation
   end
 
   def edit
