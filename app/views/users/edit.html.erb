@@ -1,25 +1,35 @@
 <div id="wrapper">
   <div id="left-container">
     <div id="presentation-box" class="card-block shadowed-box centered-text">
-      <div class="img-wrapper"> picture
-      </div>
-      <div class="main-title-block">
-        <h1 class="main-title"></h1>
-        <h4 class="main-subtitle"> email </h4>
-      </div>
       <div class="desc-wrapper">
-<%= simple_form_for @user do |f| %>
-<%= image_tag @user.picture, class:"top-img img-circle" %>
-  <%= f.input :first_name, label: @user.first_name %>
-  <%= f.input :last_name, label: @user.last_name %>
-  <%= f.input :email, placeholder: @user.email %>
-  <%= f.input :description, placeholder: @user.description %>
-  <%= f.button :submit %>
-<% end %>
+        <%= form_for(@user, html: { multipart: true }) do |f| %>
+          <p>
+          <%= f.label :first_name %>
+          <%= f.text_field :first_name %>
+          </p>
+          <p>
+          <%= f.label :last_name %>
+          <%= f.text_field :last_name %>
+          </p>
+          <p>
+          <%= f.label :email %>
+          <%= f.text_field :email %>
+          </p>
+          <p>
+          <%= f.label :description %>
+          <%= f.text_field :description %>
+          </p>
+          <p>
+          <p>
+            <%= f.label :user_picture %>
+            <%= f.file_field :user_picture %>
+          </p>
+          <p><%= f.submit %></p>
+        <% end %>
       </div>
     </div>
   </div>
   <div id="right-container">
-
+  </div>
   </div>
 </div>
