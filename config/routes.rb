@@ -1,19 +1,5 @@
 Rails.application.routes.draw do
 
-  get 'bookings/create'
-
-  get 'bookings/new'
-
-  get 'bookings/update'
-
-  get 'bookings/edit'
-
-  get 'bookings/destroy'
-
-  get 'bookings/index'
-
-  get 'bookings/show'
-
   get 'static_pages/home'
 
   get 'static_pages/help'
@@ -22,7 +8,9 @@ Rails.application.routes.draw do
     resources :accomodations
   end
 
-  resources :accomodations, only: [:index, :show]
+  resources :accomodations, only: [:index, :show] do
+    resources :bookings, only: [:new, :show, :create]
+  end
 
   root 'static_pages#home'
 

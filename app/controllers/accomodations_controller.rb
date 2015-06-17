@@ -1,5 +1,6 @@
 class AccomodationsController < ApplicationController
   before_action :set_user, only: [:create, :destroy]
+  before_action :set_accomodation, only: [:edit , :update, :show]
 
   def create
     @accomodation = @user.accomodations.build(accomodations_params)
@@ -12,13 +13,11 @@ class AccomodationsController < ApplicationController
   end
 
   def update
-    @accomodation = Accomodation.find(params[:id])
     @accomodation.update(accomodations_params)
     redirect_to user_path(@user)
   end
 
   def edit
-    @accomodation = Accomodation.find(params[:id])
   end
 
   def index
@@ -30,7 +29,7 @@ class AccomodationsController < ApplicationController
   end
 
   def show
-    @accomodation = Accomodation.find(params[:id])
+    @booking = Booking.new
   end
 
   def destroy
@@ -52,6 +51,10 @@ class AccomodationsController < ApplicationController
 
   def set_user
     @user = User.find(params[:user_id])
+  end
+
+  def set_accomodation
+    @accomodation = Accomodation.find(params[:id])
   end
 end
 

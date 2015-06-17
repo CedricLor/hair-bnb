@@ -1,74 +1,146 @@
-<div class="container-fluid">
-  <div class="row">
-    <%= image_tag("flat_1.jpg", class: "full-width", height: "450") %>
-  </div>
-</div>
-
-<div class="container-fluid">
-  <div>
-    <%= image_tag("beard1.jpg", class: "img-circle", height: "50") %>
-    <p>John Doe</p>
-  </div>
-
-  <div>
-    <h1><%= @accomodation.description %></h1>
-    <p>Paris, Ile-de-France, France<p>
-    <p><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-o"></i>(19)</p>
-    <p>Rate per night: € <%= @accomodation.night_rate %></p>
-    <ul class="list-unstyled list-inline">
-      <li>
-        <i class="fa fa-home fa-2x"></i>
-        Entire home/apt
-      </li>
-      <li>
-        <i class="fa fa-user fa-2x"></i>
-        2 Guests
-      </li>
-      <li>
-        <i class="fa fa-building fa-2x"></i>
-        1 Bedroom
-      </li>
-      <li>
-        <i class="fa fa-bed fa-2x"></i>
-        1 Bed
-      </li>
-  </div>
-</div>
-
 <div class="container">
   <div class="row">
-    <h3>About This Listing</h3>
-    <p>With Airbnb, you can find unique accommodations in people's homes—from houses and apartments, to tree houses and igloos. The listing details below explain what you'll find in this space. If you have any questions, you can contact the host directly.</p>
-    <%= mail_to "me@domain.com", "My email" %>
+    <div class="col-xs-12">
+      <%= image_tag("flat_1.jpg", class: "full-width", height: "450") %>
+    </div>
   </div>
-</div>
-<table>
-  <tr>
-    <td>The Space </td>
-    <td>Bed type: Pull-out Sofa</td>
-    <td>Bedrooms: 1</td>
-  </tr>
-  <tr>
-    <td>Amenities</td>
-    <td>Kitchen</td>
-    <td>Free Parking</td>
-  </tr>
-  <tr>
-    <td>Prices</td>
-    <td>Extra people: No Charge</td>
-    <td>Cancellation: Moderate</td>
-  </tr>
-  <tr>
-    <td>Description</td>
-    <td colspan="2">Studio de 20m² refait à neuf.
-    Il donne coté cour. Il se situe à 15 min de République à pied, 200m du métro ainsi que d'une station V'lille.
-    Nous serons ravis de vous accueillir chez nous. Comptez sur nous pour vous donner quelques adresses en ville
-    </td>
-  </tr>
-</table>
-
-<div class="container-fluid">
-  <div id="map" style="width: 100%; height: 600px;"></div>
+  <br><br>
+  <div class="row">
+    <div class="col-xs-12 col-sm-8">
+      <div class="row">
+        <div class="col-xs-11">
+          <div class="card-block shadowed-box">
+            <%= image_tag("beard1.jpg", class: "img-circle", height: "50") %>
+            <p>John Doe</p>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-11">
+          <div class="card-block shadowed-box">
+            <h1><%= @accomodation.description %></h1>
+            <p>Paris, Ile-de-France, France<p>
+            <p><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-o"></i>(19)</p>
+            <p>Rate per night: € <%= @accomodation.night_rate %></p>
+            <ul class="list-unstyled list-inline">
+              <li>
+                <i class="fa fa-home fa-2x"></i>
+                Entire home/apt
+              </li>
+              <li>
+                <i class="fa fa-user fa-2x"></i>
+                <span><%= @accomodation.accomodates %></span> Guests
+              </li>
+              <li>
+                <i class="fa fa-building fa-2x"></i>
+                1 Bedroom
+              </li>
+              <li>
+                <i class="fa fa-bed fa-2x"></i>
+                1 Bed
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-xs-12 col-sm-4">
+      <div class="card-block shadowed-box">
+        <h3 class="text-center">Book</h3>
+        <%= simple_form_for [@accomodation, @booking] do |f| %>
+          <%= f.input :from, as: :date, start_year: Date.today.year,
+                                end_year: Date.today.year, discard_day: false,
+                                order: [:day, :month, :year] %>
+          <%= f.input :to, as: :date, start_year: Date.today.year + 1,
+                                end_year: Date.today.year, discard_day: false,
+                                order: [:day, :month, :year] %>
+          <%= f.input :accepted, as: :hidden, checked_value: true, unchecked_value: false %>
+          <%= f.button :submit %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12 col-sm-6">
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12 col-sm-12">
+      <div class="card-block shadowed-box">
+        <h3>About This Listing</h3>
+        <p>With Hair'Bnb, you can find hairy accommodations at hairy people's places. The listing details below explain what you'll find in this space. If you have any questions, you can contact the host directly.</p>
+        <p>
+          <%= mail_to "me@domain.com", "My email" %>
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12 col-sm-12">
+      <div class="card-block shadowed-box">
+        <div class="row">
+          <div class="col-xs-12 col-md-2">
+            The Space
+          </div>
+          <div class="col-xs-12 col-md-4">
+            <div class="row">
+              <div class="col-xs-12">
+                Bed type: Pull-out Sofa
+              </div>
+              <div class="col-xs-12">
+                Bedrooms: 1
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-12 col-md-2">
+            Amenities
+          </div>
+          <div class="col-xs-12 col-md-4">
+            <div class="row">
+              <div class="col-xs-12">
+                Kitchen
+              </div>
+              <div class="col-xs-12">
+                Free Parking
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-12 col-md-2">
+            Prices
+          </div>
+          <div class="col-xs-12 col-md-4">
+            <div class="row">
+              <div class="col-xs-12">
+                Extra people: No Charge
+              </div>
+              <div class="col-xs-12">
+                Cancellation: Moderate
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-12 col-md-2">
+            Description
+          </div>
+          <div class="col-xs-12 col-md-8">
+            Studio de 20m² refait à neuf.
+            Il donne coté cour. Il se situe à 15 min de République à pied, 200m du métro ainsi que d'une station V'lille.
+            Nous serons ravis de vous accueillir chez nous. Comptez sur nous pour vous donner quelques adresses en ville
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12">
+      <div id="map" style="width: 100%; height: 600px;"></div>
+    </div>
+  </div>
 </div>
 
 
@@ -84,4 +156,4 @@
    })
  <% end %>
 <% end %>
--->
+
