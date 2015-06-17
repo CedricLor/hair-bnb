@@ -6,11 +6,12 @@
           <h1 class="main-title">Update your profile</h1>
         </div>
         <%= simple_form_for @user do |f| %>
-          <%= image_tag @user.picture, class:"top-img img-circle" %>
+          <%= image_tag @user.picture.url(:medium), class:"top-img img-circle" %>
           <%= f.input :first_name %>
           <%= f.input :last_name %>
           <%= f.input :email %>
           <%= f.input :description %>
+          <%= f.file_field :picture %>
           <%= f.button :submit %>
         <% end %>
       </div>
