@@ -1,7 +1,9 @@
 <div class="container">
   <div class="row">
     <div class="col-xs-12">
-      <%= image_tag("flat_1.jpg", class: "full-width", height: "450") %>
+      <% @accomodation.photos.each do |photo| %>
+      <%= image_tag photo.picture.url(:medium), class: "img-thumbnail", height: "300" %>
+      <% end %>
     </div>
   </div>
   <br><br>
@@ -58,10 +60,6 @@
           <%= f.button :submit %>
         <% end %>
       </div>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-xs-12 col-sm-6">
     </div>
   </div>
   <div class="row">
@@ -125,12 +123,12 @@
         </div>
         <div class="row">
           <div class="col-xs-12 col-md-2">
-            Description
+            Descricption
           </div>
           <div class="col-xs-12 col-md-8">
             Studio de 20m² refait à neuf.
             Il donne coté cour. Il se situe à 15 min de République à pied, 200m du métro ainsi que d'une station V'lille.
-            Nous serons ravis de vous accueillir chez nous. Comptez sur nous pour vous donner quelques adresses en ville
+            Nous serons ravis de vous accueillir chez nous. Comptez sur nous pour vous donner quelques adresses en ville.
           </div>
         </div>
       </div>

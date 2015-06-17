@@ -5,11 +5,17 @@ Rails.application.routes.draw do
   get 'static_pages/help'
 
   resources :users do
-    resources :accomodations
+    resources :accomodations do
+      resources :photos, only: [:new, :create]
+    end
   end
 
   resources :accomodations, only: [:index, :show] do
     resources :bookings, only: [:new, :show, :create]
+  end
+
+  resources :accomodations do
+    resources :photos, only: [:new, :create]
   end
 
   root 'static_pages#home'
