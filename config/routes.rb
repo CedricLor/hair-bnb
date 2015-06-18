@@ -4,19 +4,27 @@ Rails.application.routes.draw do
 
   get 'static_pages/help'
 
+  # navigation as a given user
   resources :users do
+    # following line to be confirmed by David and on David's machine
+    resources :photos, only: [:new, :create]
     resources :accomodations do
       resources :photos, only: [:new, :create]
+      resources :bookings, only: [:new, :index, :create]
     end
   end
 
+  # anonymous navigation
   resources :accomodations, only: [:index, :show] do
-    resources :bookings, only: [:new, :show, :create]
-  end
-
-  resources :accomodations do
+    resources :bookings, only: [:new, :index, :create]
+    # TO DO: TO BE CONFIRMED ON DAVID'S MACHINE
     resources :photos, only: [:new, :create]
   end
+
+  # TO DO: TO BE CONFIRMED ON DAVID'S MACHINE
+  # resources :accomodations do
+  #   resources :photos, only: [:new, :create]
+  # end
 
   root 'static_pages#home'
 
