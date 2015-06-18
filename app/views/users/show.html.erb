@@ -26,11 +26,11 @@
           <%= image_tag( @user.picture.url(:medium), class: "top-img img-circle")%>
         </div>
         <div class="main-title-block">
-          <h1 class="main-title"><%= @user.first_name + " " +  @user.last_name %></h1>
-          <h4 class="main-subtitle"><%= @user.email %></h4>
+          <h1 class="main-title"><%= "#{@user.first_name}  #{@user.last_name}" %></h1>
+          <h4 class="main-subtitle"><%= "#{@user.email}" %></h4>
         </div>
         <div class="desc-wrapper">
-          <p><%= @user.description %></p>
+          <p><%= "#{@user.description}" %></p>
         </div>
         <div>
           <%= link_to "Edit profile", edit_user_path(@user) %>
