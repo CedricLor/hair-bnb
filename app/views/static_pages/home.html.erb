@@ -5,9 +5,19 @@
 
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
-<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,700|Montserrat:400,700' rel='stylesheet' type='text/css'>
-<%= render "static_pages/searchbar" %>
+  <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,700|Montserrat:400,700' rel='stylesheet' type='text/css'>
 </head>
 <body>
+
+  <% if user_signed_in? %>
+    Hello <%= current_user.email %>!
+    <%= link_to 'Sign out', destroy_user_session_path, method: 'delete', class: "btn btn-danger" %>
+  <% else %>
+    <%= link_to 'Sign up', new_user_registration_path, class: "btn btn-primary" %>
+    <%= link_to 'Sign in', new_user_session_path, class: "btn btn-success" %>
+  <% end %>
+
+  <%= render "static_pages/searchbar" %>
+
 </body>
 </html>
