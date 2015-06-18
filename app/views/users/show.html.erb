@@ -1,7 +1,12 @@
 <div class="container text-center">
   <div id="myBackLinkRow" class="row">
     <div class="col-xs-12 col-sm-6 col-sm-offset-1 text-left">
-      <%= link_to "Back to Accomodation List", accomodations_path %>
+      <%= link_to "Back to Accomodation List (anonymous navigation)", accomodations_path %>
+    </div>
+  </div>
+  <div id="myBookLinkRow" class="row">
+    <div class="col-xs-12 col-sm-6 col-sm-offset-1 text-left">
+      <%= link_to "Choose an Accomodation for A Booking (logged in navigation)", user_accomodations_path(@user) %>
     </div>
   </div>
   <div id="myHeaderRow" class="row">
