@@ -58,26 +58,33 @@
         </div>
       </div>
     </div>
-    <div class="col-xs-12 col-sm-4"><!-- Availabilities -->
+    <div class="col-xs-12 col-sm-5"><!-- Availabilities -->
       <div class="row">
         <div class="col-xs-11">
           <div class="card-block shadowed-box">
             <h3 class="text-center">Booked Dates</h3>
             <% @accomodation_bookings.each do |booking| %>
-              <span><%= booking.from %></span>
-              <span> </span>
-              <span><%= booking.to %></span>
+              <div class="row">
+                <div class="col-xs-8">
+                  <%= "From #{booking.from.strftime("%F")} to #{booking.to.strftime("%F")} " %>
+                </div>
+                <div class="col-xs-4">
+                  <% if booking.accepted == false %>
+                    <%= "Pending" %>
+                  <% else %>
+                    <%= "Confirmed" %>
+                  <% end %>
+                </div>
+              </div>
             <% end %>
           </div>
         </div>
       </div>
     </div>
-    <div class="col-xs-12 col-sm-4"><!-- Bookings -->
+    <div class="col-xs-12 col-sm-3"><!-- Bookings -->
       <div class="card-block shadowed-box">
         <h3 class="text-center">Book</h3>
-        <%= params %>
         <% if params[:user_id].present? %>
-          <%= "nested" %>
           <%= simple_form_for [@user, @accomodation, @booking] do |f| %>
             <%= f.input :from, as: :date, start_year: Date.today.year,
                                   end_year: Date.today.year, discard_day: false,
@@ -88,7 +95,6 @@
             <%= f.button :submit %>
           <% end %>
         <% else %>
-          <%= "un-nested" %>
           <%= simple_form_for [@accomodation, @booking] do |f| %>
             <%= f.input :from, as: :date, start_year: Date.today.year,
                                   end_year: Date.today.year, discard_day: false,
