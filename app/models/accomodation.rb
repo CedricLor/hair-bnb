@@ -18,6 +18,10 @@ class Accomodation < ActiveRecord::Base
               numericality: { only_integer: true }
   validates :address,
               presence: true
+  def self.search(query)
+    # where(:title, query) -> This would return an exact match of the query
+    where("locality like ?", "%#{query}%")
+  end
 end
 
 # accomodates -> integer

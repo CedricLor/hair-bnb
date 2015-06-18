@@ -21,7 +21,11 @@ class AccomodationsController < ApplicationController
   end
 
   def index
-    @accomodations = Accomodation.all
+    if params[:search]
+      @accomodations = Accomodation.where(locality: params[:search]).order("night_rate ASC")
+    else
+      @accomodations = Accomodation.all.order("night_rate ASC")
+    end
     @markers = Gmaps4rails.build_markers(@accomodations) do | accomodation, marker |
       marker.lat accomodation.latitude
       marker.lng accomodation.longitude
@@ -57,9 +61,9 @@ class AccomodationsController < ApplicationController
     params.require(:accomodation).permit(:accomodates, :description, :night_rate, :address, :locality, :street_number, :country, :route)
   end
 
-  def set_user
-    @user = User.find(params[:user_id])
-  end
+  # def set_user
+  #   @user = User.find(params[:user_id])
+  # end
 
   def set_accomodation
     @accomodation = Accomodation.find(params[:id])
