@@ -3,16 +3,12 @@ class BookingsController < ApplicationController
   before_action :set_accomodation, only: [:create]
 
   def create
-    # @accomodation = @user.accomodations.build(accomodations_params)
-    # @accomodation.save
-    # redirect_to user_path(@user)
     @booking = @accomodation.bookings.build(renter_booking_params)
-    @booking.save!
-
+    @booking.save
+    redirect_to user_accomodation_path(@user, @accomodation)
     # current_account.bookings.create
     # account = Account.new(params[:account_id])
     # account.bookings.create
-
   end
 
   def new

@@ -34,11 +34,11 @@ ActiveRecord::Schema.define(version: 20150618124107) do
   create_table "bookings", force: :cascade do |t|
     t.datetime "from"
     t.datetime "to"
-    t.boolean  "accepted",        default: true
+    t.boolean  "accepted",        default: false
     t.integer  "accomodation_id"
     t.integer  "user_id"
-    t.datetime "created_at",                     null: false
-    t.datetime "updated_at",                     null: false
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
   end
 
   add_index "bookings", ["accomodation_id"], name: "index_bookings_on_accomodation_id"
