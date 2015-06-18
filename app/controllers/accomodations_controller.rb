@@ -35,7 +35,6 @@ class AccomodationsController < ApplicationController
     @markers = Gmaps4rails.build_markers(@accomodation) do | accomodation, marker |
       marker.lat accomodation.latitude
       marker.lng accomodation.longitude
-      marker.infowindow render_to_string(partial: "/accomodations/map_box", locals: { accomodation: accomodation })
     end
   end
 
@@ -53,7 +52,7 @@ class AccomodationsController < ApplicationController
   private
 
   def accomodations_params
-    params.require(:accomodation).permit(:accomodates, :description, :night_rate, :address)
+    params.require(:accomodation).permit(:accomodates, :description, :night_rate, :address, :locality, :street_number, :country, :route)
   end
 
   def set_user
