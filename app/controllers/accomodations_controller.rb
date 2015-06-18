@@ -25,13 +25,19 @@ class AccomodationsController < ApplicationController
     @markers = Gmaps4rails.build_markers(@accomodations) do | accomodation, marker |
       marker.lat accomodation.latitude
       marker.lng accomodation.longitude
+      marker.infowindow render_to_string(partial: "/accomodations/map_box", locals: { accomodation: accomodation })
     end
   end
 
   def show
+    @accomodation = Accomodation.find(params[:id])
     @booking = Booking.new
     @owner = @accomodation.user
     @accomodation_bookings = @accomodation.bookings
+    @markers = Gmaps4rails.build_markers(@accomodation) do | accomodation, marker |
+      marker.lat accomodation.latitude
+      marker.lng accomodation.longitude
+    end
   end
 
   def destroy
@@ -48,7 +54,7 @@ class AccomodationsController < ApplicationController
   private
 
   def accomodations_params
-    params.require(:accomodation).permit(:accomodates, :description, :night_rate, :address)
+    params.require(:accomodation).permit(:accomodates, :description, :night_rate, :address, :locality, :street_number, :country, :route)
   end
 
   def set_user
