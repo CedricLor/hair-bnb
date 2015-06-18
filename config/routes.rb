@@ -1,8 +1,6 @@
 Rails.application.routes.draw do
 
   devise_for :users
-  get 'static_pages/home'
-  get 'static_pages/help'
 
   # navigation as a given user
   resources :users do
@@ -26,7 +24,8 @@ Rails.application.routes.draw do
   #   resources :photos, only: [:new, :create]
   # end
 
-  root 'static_pages#home'
+  # root 'static_pages#home'
+  root 'welcome#index'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
