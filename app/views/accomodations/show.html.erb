@@ -92,8 +92,8 @@
     <div class="col-xs-12 col-sm-3"><!-- Bookings -->
       <div class="card-block shadowed-box">
         <h3 class="text-center">Book</h3>
-        <% if user_signed_in? %>
-          <%= simple_form_for [current_user, @accomodation, @booking] do |f| %>
+        <% if params[:user_id].present? %>
+          <%= simple_form_for [@user, @accomodation, @booking] do |f| %>
             <%= f.input :from, as: :date, start_year: Date.today.year,
                                   end_year: Date.today.year, discard_day: false,
                                   order: [:day, :month, :year] %>

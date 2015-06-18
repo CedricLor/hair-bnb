@@ -1,5 +1,5 @@
 class AccomodationsController < ApplicationController
-  before_action :set_user, only: [:create, :destroy]
+  before_action :set_user, only: [:create, :destroy, :index, :show]
   before_action :set_accomodation, only: [:edit , :update, :show]
 
   def create
@@ -30,6 +30,7 @@ class AccomodationsController < ApplicationController
   end
 
   def show
+    @accomodation = Accomodation.find(params[:id])
     @booking = Booking.new
     @owner = @accomodation.user
     @accomodation_bookings = @accomodation.bookings
