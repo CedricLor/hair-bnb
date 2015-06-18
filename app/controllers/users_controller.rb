@@ -33,10 +33,5 @@ class UsersController < ApplicationController
 
   def set_user
     @user = User.find(params[:id])
-    # if User.find(params[:id])
-    #   return @user = User.find(params[:id])
-    # else
-    #   flash[:alert] = "Unable to find user with id number #{params[:id]}!"
-    # end
   end
 end
