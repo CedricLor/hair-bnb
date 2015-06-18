@@ -1,11 +1,11 @@
 class AccomodationsController < ApplicationController
-  before_action :set_user, only: [:create, :destroy, :index, :show]
-  before_action :set_accomodation, only: [:edit , :update, :show]
-
   def create
-    @accomodation = @user.accomodations.build(accomodations_params)
+    @accomodation = Accomodation.new(accomodations_params)
+    @accomodation.accomodates = @accomodation.accomodates.to_i
+    @accomodation.night_rate = @accomodation.night_rate.to_i
+    @accomodation.user_id = @accomodation.user_id.to_i
     @accomodation.save
-    redirect_to user_path(@user)
+    redirect_to accomodations_path
   end
 
   def new
@@ -13,11 +13,13 @@ class AccomodationsController < ApplicationController
   end
 
   def update
+    @accomodation = Accomodation.find(params[:id])
     @accomodation.update(accomodations_params)
     redirect_to @accomodation
   end
 
   def edit
+    @accomodation = Accomodation.find(params[:id])
   end
 
   def index
@@ -29,34 +31,30 @@ class AccomodationsController < ApplicationController
   end
 
   def show
-    @booking = Booking.new
-    @owner = @accomodation.user
-    @accomodation_bookings = @accomodation.bookings
+    @accomodation = Accomodation.find(params[:id])
   end
 
   def destroy
     if Accomodation.find(params[:id])
       @accomodation = Accomodation.find(params[:id])
       @accomodation.destroy
-      redirect_to user_path(@user)
+      redirect_to accomodations_path # redirect to redraft upon setting nested routes
     else
       flash[:alert] = "The accomodation that you are trying to delete has already been delete. Refresh your navigator!"
-      redirect_to user_path(@user)
+      redirect_to accomodations_path # redirect to redraft upon setting nested routes
     end
   end
 
   private
 
   def accomodations_params
-    params.require(:accomodation).permit(:accomodates, :description, :night_rate, :address)
+    params.require(:accomodation).permit(:accomodates, :description, :night_rate, :address, :user_id)
   end
 
-  def set_user
-    @user = User.find(params[:user_id])
-  end
-
-  def set_accomodation
-    @accomodation = Accomodation.find(params[:id])
+  def convert_params
+    @accomodation.accomodates = @accomodation.accomodates.to_i
+    @accomodation.night_rate = @accomodation.night_rate.to_i
+    @accomodation.user_id = @accomodation.user_id.to_i
   end
 end
 

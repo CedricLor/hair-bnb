@@ -1,8 +1,6 @@
 class Accomodation < ActiveRecord::Base
-  has_many :photos
-  belongs_to :user
-  has_many :bookings, dependent: :destroy
-  # belongs_to :user, class_name: "Owner", foreign_key: "owner_id"
+  belongs_to :user, dependent: :destroy
+  # belongs_to :user, dependent: :destroy, counter_cache: true, class_name: "Owner", foreign_key: "owner_id"
   geocoded_by :address
   after_validation :geocode, if: :address_changed?
   validates :description,

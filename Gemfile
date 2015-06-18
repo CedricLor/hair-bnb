@@ -6,7 +6,6 @@ ruby '2.2.2'
 gem 'rails_12factor', group: :production
 gem 'puma',           group: :production
 
-gem 'devise'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.1'
@@ -58,7 +57,10 @@ gem 'paperclip'
 # Geolocation stuffs
 gem 'geocoder'
 gem 'gmaps4rails'
+source 'https://rails-assets.org' do
 gem 'rails-assets-underscore'
+
+end
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -75,5 +77,7 @@ group :development, :test do
   gem "binding_of_caller"
   # seeder
   gem "faker"
+  # devise auth
+  gem 'devise', '~> 3.5.1'
 end
 

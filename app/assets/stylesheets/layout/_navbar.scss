@@ -9,7 +9,7 @@ $navbar-text-transform: capitalize;
 $navbar-font-weight: 300;
 $navbar-letter-spacing: 1.5px;
 $navbar-font-family: $navbar-font;
-$navbar-bg: rgba(255,255,255,0.6);
+$navbar-bg: white;
 
 /* -------------------------------------
  * Box model
@@ -55,9 +55,12 @@ $navbar-profile-border-width: 2px;
      -moz-transition: background 0.4s ease, opacity 0.4s ease;
       -ms-transition: background 0.4s ease, opacity 0.4s ease;
           transition: background 0.4s ease, opacity 0.4s ease;
-  opacity: 1;
+  opacity: 0;
   animation-name: fade-out;
   animation-duration: 5s;
+  &:hover {
+    opacity: 1;
+  }
 
   .navbar-nav > li > a,
   .navbar-nav > .open > a,

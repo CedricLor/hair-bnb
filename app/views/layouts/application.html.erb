@@ -19,16 +19,17 @@
   <% end -%>
   </div>
 
+
   <%= render "shared/navbar" %>
 
-  <%= render 'shared/notices' %>
-  <%= render 'shared/alerts' %>
+  <p class="notice"><%= notice %></p>
+  <p class="alert"><%= alert %></p>
 
-  <div id="yieldWrapper">
-    <%= yield %>
-  </div>
+  <%= yield %>
 
-  <%= render "shared/footer" %>
+  <%#= render "shared/footer" %>
+
+  <%#= render 'shared/notices' %>
 
 
   <%#= render "shared/footer" %>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150618094331) do
+ActiveRecord::Schema.define(version: 20150617102819) do
 
   create_table "accomodations", force: :cascade do |t|
     t.integer  "accomodates"
@@ -27,41 +27,13 @@ ActiveRecord::Schema.define(version: 20150618094331) do
 
   add_index "accomodations", ["user_id"], name: "index_accomodations_on_user_id"
 
-  create_table "bookings", force: :cascade do |t|
-    t.datetime "from"
-    t.datetime "to"
-    t.boolean  "accepted",        default: true
-    t.integer  "accomodation_id"
-    t.integer  "user_id"
-    t.datetime "created_at",                     null: false
-    t.datetime "updated_at",                     null: false
-  end
-
-  add_index "bookings", ["accomodation_id"], name: "index_bookings_on_accomodation_id"
-  add_index "bookings", ["user_id"], name: "index_bookings_on_user_id"
-
-  create_table "photos", force: :cascade do |t|
-    t.integer  "accomodation_id"
-    t.datetime "created_at",           null: false
-    t.datetime "updated_at",           null: false
-    t.string   "picture_file_name"
-    t.string   "picture_content_type"
-    t.integer  "picture_file_size"
-    t.datetime "picture_updated_at"
-  end
-
-  add_index "photos", ["accomodation_id"], name: "index_photos_on_accomodation_id"
-
   create_table "users", force: :cascade do |t|
     t.string   "first_name"
     t.string   "last_name"
+    t.text     "picture"
     t.text     "description"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
-    t.string   "picture_file_name"
-    t.string   "picture_content_type"
-    t.integer  "picture_file_size"
-    t.datetime "picture_updated_at"
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
     t.string   "reset_password_token"

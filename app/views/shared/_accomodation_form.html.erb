@@ -1,8 +1,11 @@
 <%= simple_form_for(@accomodation, html: { multipart: true }) do |f| %>
-  <%= f.error_notification %>
-  <%= f.input :address %>
-  <%= f.input :description %>
-  <%= f.input :accomodates %>
-  <%= f.input :night_rate %>
-  <%= f.button :submit %>
+    <%= f.error_notification %>
+    <%= f.input :address %>
+    <%= f.input :description %>
+    <%= f.input :accomodates %>
+    <%= f.input :night_rate %>
+    <%= f.input :user_id %>
+    <%= f.association :user, collection: Owner.select("first_name", "last_name"), prompt: "Which user are you?" %>
+    <!--, collection: User.all(order: 'name'), prompt: "Which user are you?" %>-->
+    <%= f.button :submit %>
 <% end %>
