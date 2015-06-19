@@ -22,7 +22,11 @@ class AccomodationsController < ApplicationController
   end
 
   def index
-    @accomodations = Accomodation.all
+    if params[:search]
+      @accomodations = Accomodation.where(locality: params[:search]).order("night_rate ASC")
+    else
+      @accomodations = Accomodation.all.order("night_rate ASC")
+    end
     @markers = Gmaps4rails.build_markers(@accomodations) do | accomodation, marker |
       marker.lat accomodation.latitude
       marker.lng accomodation.longitude

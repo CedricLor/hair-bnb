@@ -7,6 +7,14 @@
   padding-top: 8em;
   padding-bottom: 8em;
 }
+.xs-padded {
+  padding: 5px;
+}
+.price-label {
+  position:absolute;
+  top:185px;
+  right:20px;
+}
 .bg-red {
   background: $red;
   color: white;
