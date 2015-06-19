@@ -6,7 +6,11 @@
         <%= link_to(accomodation_path(accomodation)) do %>
           <div class="col-sm-6 col-md-6 xs-padded">
             <div class="thumbnail">
+              <% if accomodation.photos.present? %>
               <%= image_tag(accomodation.photos.sample.picture.url(:medium), height: '180', width: '250') %>
+              <% else %>
+              <%= image_tag ("default.jpg"), height: '180', width: '250' %>
+              <% end %>
               <div class="caption">
                 <p><%= accomodation.description %></p>
                 <p><%= "#{accomodation.locality}, #{accomodation.country}" %></p>
