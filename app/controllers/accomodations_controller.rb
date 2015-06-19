@@ -42,6 +42,7 @@ class AccomodationsController < ApplicationController
       marker.lat accomodation.latitude
       marker.lng accomodation.longitude
     end
+    @new_flat_review = FlatReview.new
   end
 
   def destroy
