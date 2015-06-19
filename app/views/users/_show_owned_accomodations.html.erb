@@ -20,10 +20,14 @@
             <p><%= "Booked from #{booking.from.strftime("%F")} to #{booking.to.strftime("%F")} " %></p>
           </div>
           <div class="col-xs-4 text-right">
-            <% if booking.accepted == false %>
-              <p><%= link_to "Accept", edit_booking_path(booking) %></p>
+            <% if booking.reviewed == false %>
+              <p><%= link_to "Review", edit_booking_path(booking) %></p>
             <% else %>
-              <p><%= "Accepted" %></p>
+              <% if booking.accepted == true %>
+                <p><%= "Accepted" %></p>
+              <% else %>
+                <p><%= "Rejected" %></p>
+              <% end %>
             <% end %>
           </div>
         </div>

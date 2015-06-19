@@ -1,11 +1,13 @@
 class BookingsController < ApplicationController
   before_action :set_user, only: [:create, :update, :destroy]
   before_action :set_accomodation, only: [:create]
+  before_action :set_booking, only: [:edit, :update]
 
   def create
     @booking = @accomodation.bookings.build(renter_booking_params)
     @booking.user_id = @user.id
     @booking.accepted = false
+    @booking.reviewed = false
     @booking.save
     redirect_to accomodation_path(@accomodation)
   end
@@ -13,21 +15,25 @@ class BookingsController < ApplicationController
   def new
   end
 
-  def update
-    @booking = Booking.find(params[:id])
-    @booking.update({from: @booking.from, to: @booking.to, accepted: true})
-    redirect_to user_path(@user)
+  def edit
   end
 
-  def edit
-    @booking = Booking.find(params[:id])
+  def update
+    if update_params["accepted"] == "1" # TO DO: DISCUSS WITH SIMON
+      @booking.update({from: @booking.from, to: @booking.to, accepted: true, reviewed: true})
+      flash[:notice] = "The booking request has been accepted!"
+    else
+      @booking.update({from: @booking.from, to: @booking.to, accepted: false, reviewed: true})
+      flash[:notice] = "The booking request has been rejected!"
+    end
+    redirect_to user_path(@user)
   end
 
   def destroy
     if @booking = Booking.find(params[:id])
       if @user.id == @booking.user.id
         @booking.destroy
-        flash[:notice] = "The booking request has been rejected!"
+        flash[:notice] = "The booking request has been deleted!"
         redirect_to user_path(@user)
       else
         flash[:alert] = "You do not have the right to reject this booking request!"
@@ -47,6 +53,10 @@ class BookingsController < ApplicationController
 
   private
 
+  def update_params
+    params.require(:booking).permit(:accepted)
+  end
+
   def renter_booking_params
     params.require(:booking).permit(:from, :to)
   end
@@ -58,5 +68,9 @@ class BookingsController < ApplicationController
 
   def set_accomodation
     @accomodation = Accomodation.find(params[:accomodation_id])
+  end
+
+  def set_booking
+    @booking = Booking.find(params[:id])
   end
 end
