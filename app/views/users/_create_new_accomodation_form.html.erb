@@ -1,0 +1,12 @@
+<%= simple_form_for [@user, @new_user_accomodation] do |f| %>
+  <%= f.error_notification %>
+  <%= f.input :address %>
+  <%= f.input :street_number, input_html: { id: 'street_number' }, as: :hidden %>
+  <%= f.input :route, input_html: { id: 'route' }, as: :hidden %>
+  <%= f.input :locality, input_html: { id: 'locality' }, as: :hidden %>
+  <%= f.input :country, input_html: { id: 'country' }, as: :hidden %>
+  <%= f.input :description %>
+  <%= f.input :accomodates %>
+  <%= f.input :night_rate %>
+  <%= f.button :submit %>
+<% end %>

@@ -19,6 +19,7 @@
 
         <% if user_signed_in? %>
           <!-- Hello <%= current_user.email %>! -->
+          <!-- LOGGED IN NAVIGATION BAR FEATURES -->
           <li class="dropdown">
             <%= link_to "#", {class: "dropdown-toggle", "data-toggle" => "dropdown", "role" => "button", "aria-expanded" => "false"} do %>
               <%= image_tag current_user.picture.url(:medium), class: "img-avatar" %>
@@ -33,7 +34,6 @@
               </li>
               <li>
                 <%= link_to "Add an accomodation", new_accomodation_path %>
-                <%#= link_to "Add an accomodation", new_accomodation_path %><!-- TO BE UPDATED WITH RELEVANT ROUTE (NESTED USER ROUTE)-->
               </li>
               <li>
                 <%= link_to "View all accomodations", accomodations_path %>
@@ -45,8 +45,9 @@
           </li>
           <li>
           <%= link_to "List users", users_path %>
-        </li>
+          </li>
         <% else %>
+          <!-- UNLOGGED NAVIGATION BAR FEATURES -->
           <li>
             <%= link_to 'Sign up', new_user_registration_path %>
           </li>
