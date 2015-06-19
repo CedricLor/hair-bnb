@@ -1,0 +1,32 @@
+<% @user.bookings.each do | booking | %>
+  <div class="row my-booking-box text-left">
+    <div class="col-xs-12 col-sm-6">
+      <%= image_tag("flat_1.jpg", height: '180', width: '250') %>
+    </div>
+    <div class="col-xs-12 col-sm-6">
+      <p>Which flat? <%= "#{booking.accomodation.description}" %></p>
+      <p>Where? <%= "#{booking.accomodation.locality}, #{booking.accomodation.country}" %></p>
+      <p>When? <%= "from #{booking.from.strftime("%F")} to #{booking.to.strftime("%F")}" %></p>
+      <p>Cost? $
+        <%= "#{((booking.to - booking.from)/86400) * booking.accomodation.night_rate }" %>
+      </p>
+      <p>
+        Status?
+        <% if booking.reviewed == false %>
+          <%= "Pending review" %>
+        <% else %>
+          <% if booking.accepted == true %>
+            <%= "Accepted" %>
+          <% else %>
+            <%= "Rejected" %>
+          <% end %>
+        <% end %>
+      </p>
+      <p>
+        <%= link_to 'Cancel this booking', booking_path(booking), method: 'delete', class: "btn btn-default btn-xs"%>
+      </p>
+    </div>
+  </div>
+<% end %>
+
+<!-- /86400000 -->

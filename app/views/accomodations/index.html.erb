@@ -11,9 +11,17 @@
                 <p><%= accomodation.description %></p>
                 <p><%= "#{accomodation.locality}, #{accomodation.country}" %></p>
                 <p><span class="label label-info price-label"><%= accomodation.night_rate %> €</span></p>
-                <p>Ratings: <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-o"></i>(19)</p>
+                <p>
+                  Ratings:
+                  <i class="fa fa-star"></i>
+                  <i class="fa fa-star"></i>
+                  <i class="fa fa-star"></i>
+                  <i class="fa fa-star"></i>
+                  <i class="fa fa-star-o"></i>
+                  (19)
+                </p>
                 <p class="text-center">
-                  <%= link_to("Book me!", accomodation_path(accomodation), class: "btn btn-primary", role: "button") %>
+                  <%= link_to("Book me!", accomodation_path(accomodation), class: "btn btn-default btn-sm", role: "button") %>
                 </p>
               </div>
             </div>
