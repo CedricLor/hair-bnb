@@ -6,14 +6,26 @@
         <%= link_to(accomodation_path(accomodation)) do %>
           <div class="col-sm-6 col-md-6 xs-padded">
             <div class="thumbnail">
-              <%= image_tag("flat_1.jpg", height: '180', width: '250') %>
+              <% if accomodation.photos.present? %>
+              <%= image_tag(accomodation.photos.sample.picture.url(:medium), height: '180', width: '250') %>
+              <% else %>
+              <%= image_tag ("default.jpg"), height: '180', width: '250' %>
+              <% end %>
               <div class="caption">
-                <h3><%= accomodation.description %></h3>
+                <p><%= accomodation.description %></p>
                 <p><%= "#{accomodation.locality}, #{accomodation.country}" %></p>
                 <p><span class="label label-info price-label"><%= accomodation.night_rate %> €</span></p>
-                <p>Ratings: <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-o"></i>(19)</p>
+                <p>
+                  Ratings:
+                  <i class="fa fa-star"></i>
+                  <i class="fa fa-star"></i>
+                  <i class="fa fa-star"></i>
+                  <i class="fa fa-star"></i>
+                  <i class="fa fa-star-o"></i>
+                  (19)
+                </p>
                 <p class="text-center">
-                  <%= link_to("Book me!", accomodation_path(accomodation), class: "btn btn-primary", role: "button") %>
+                  <%= link_to("Book me!", accomodation_path(accomodation), class: "btn btn-default btn-sm", role: "button") %>
                 </p>
               </div>
             </div>

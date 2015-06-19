@@ -29,9 +29,8 @@
               <li>
                 <%= link_to "Edit profile", edit_user_path(current_user) %>
               </li>
-              <li>
-                <%= link_to "Add an accomodation", new_accomodation_path %>
-                <%#= link_to "Add an accomodation", new_accomodation_path %><!-- TO BE UPDATED WITH RELEVANT ROUTE (NESTED USER ROUTE)-->
+              <!--<li>
+                <%= link_to "Add an accomodation", new_accomodation_path %>-->
               </li>
               <li>
                 <%= link_to "View all accomodations", accomodations_path %>
@@ -41,10 +40,8 @@
               </li>
             </ul>
           </li>
-          <li>
-          <%= link_to "List users", users_path %>
-        </li>
         <% else %>
+          <!-- UNLOGGED NAVIGATION BAR FEATURES -->
           <li>
             <%= link_to 'Sign up', new_user_registration_path %>
           </li>

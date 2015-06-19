@@ -1,0 +1,6 @@
+<% @accomodation.photos.each do |photo| %>
+<p>
+  <%= image_tag photo.picture.url(:medium), class:"img-thumbnail", width:"300px" %>
+  <%= link_to('delete', photo_path(photo), method: :delete) %>
+</p>
+<% end %>
