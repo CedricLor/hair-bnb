@@ -20,6 +20,7 @@ Rails.application.routes.draw do
     resources :bookings, only: [:new, :index, :create]
     # TO DO: TO BE CONFIRMED ON DAVID'S MACHINE
     resources :photos, only: [:new, :create]
+    resources :flat_reviews, only: [:new, :create]
   end
 
   resources :photos, only: [:destroy] # DO NOT CHANGE THIS ROUTE

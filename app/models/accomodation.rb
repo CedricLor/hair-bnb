@@ -4,6 +4,7 @@ class Accomodation < ActiveRecord::Base
   # belongs_to :owner, source: :user
   has_many :bookings, dependent: :destroy
   has_many :renters, through: :bookings, source: :user
+  has_many :flat_reviews, dependent: :destroy
   # belongs_to :user, class_name: "Owner", foreign_key: "owner_id"
   geocoded_by :address
   after_validation :geocode, if: :address_changed?

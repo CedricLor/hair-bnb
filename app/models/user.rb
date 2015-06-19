@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
   has_many :accomodations, dependent: :destroy
   has_many :bookings, dependent: :destroy
+  has_many :flat_reviews
 
   has_attached_file :picture,
     styles: { medium: "300x300>", thumb: "100x100>" }
