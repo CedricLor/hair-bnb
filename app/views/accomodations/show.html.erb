@@ -1,10 +1,13 @@
-<div class="fluid-container">
+<div class="container">
   <div class="row">
-    <div class="col-xs-12">
-      <% @accomodation.photos.each do |photo| %>
-      <%= image_tag photo.picture.url(:medium), class: "img-thumbnail", height: "300" %>
-      <% end %>
-    </div>
+    <p><%=  link_to "Update this accomodation", "" , class: "btn btn-default btn-sm" %></p>
+  </div>
+  <div class="row">
+    <div class="col-xs-12 col-sm-12">
+        <% @accomodation.photos.each do |photo| %>
+        <%= image_tag photo.picture.url(:medium), class:"img-thumbnail", width:"280px" %>
+        <% end %>
+      </div>
   </div>
 </div>
 <div class="container">
@@ -18,7 +21,7 @@
             <h3>About The Owner</h3>
             <p class="text-center">
               <!-- TO DO David: Update profile picture of the owner -->
-              <%= image_tag("beard1.jpg", class: "img-circle", height: "50") %>
+              <%= image_tag(@accomodation.user.picture.url(:medium), class: "img-circle", height: "50") %>
               <!-- TO DO: Align properly with smart CSS -->
               <br><%= "#{@owner.first_name} #{@owner.last_name}" %>
             </p>
@@ -32,7 +35,7 @@
       <div class="row">
         <div class="col-xs-11">
           <div class="card-block shadowed-box">
-            <h1><%= @accomodation.description %></h1>
+            <h4><%= @accomodation.description %></h4>
             <p><%= "#{@accomodation.locality}, #{@accomodation.country}" %><p>
             <p>Ratings: <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-o"></i>(19)</p>
             <p>Rate per night: € <%= @accomodation.night_rate %></p>
