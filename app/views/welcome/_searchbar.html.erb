@@ -1,96 +1,16 @@
-<div id="myCarousel" class="carousel slide" data-ride="carousel">
-      <a class="left carousel-control" href="#myCarousel" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a>
-      <a class="right carousel-control" href="#myCarousel" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
-    </div>
-    <div class="search">
-        <div class="container">
-          <div class="row">
-            <div class="col-md-10 col-md-offset-1">
-              <div class="form-section">
-                <div class="row">
-                    <%= form_tag(accomodations_path, :method => "get", class: "navbar-form", id: "search-form") do %>
-                      <div class="col-md-4">
-                        <%= text_field_tag :search, params[:search], class: "form-group", placeholder: "City" %>
-                        <!-- <div class="form-group">
-                          <label class="sr-only" for="locality">Location</label>
-                          <input type="text" class="form-control" id="locality" placeholder="Where ?">
-                        </div> -->
-                      </div>
-                      <!-- <div class="col-md-2">
-                        <div class="form-group">
-                          <label class="sr-only" for="checkin">Check in</label>
-                          <div class="input-group">
-                            <input type="text" class="form-control" id="checkin" placeholder="Check in">
-                            <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-md-2">
-                        <div class="form-group">
-                          <label class="sr-only" for="checkout">Check out</label>
-                          <div class="input-group">
-                            <input type="text" class="form-control" id="checkout" placeholder="Check out">
-                            <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-md-2">
-                        <div class="form-group">
-                          <label class="sr-only" for="guest">Guest</label>
-                          <select id="guest" name="guest" class="form-control">
-                              <option value="1">1 Guest</option>
-                              <option value="2">2 Guests</option>
-                              <option value="3">3 Guests</option>
-                              <option value="4">4 Guests</option>
-                              <option value="5">5 Guests</option>
-                              <option value="6">6 Guests</option>
-                              <option value="7">7 Guests</option>
-                              <option value="8">8 Guests</option>
-                              <option value="9">9 Guests</option>
-                              <option value="10">10 Guests</option>
-                              <option value="11">11 Guests</option>
-                              <option value="12">12 Guests</option>
-                              <option value="13">13 Guests</option>
-                              <option value="14">14 Guests</option>
-                              <option value="15">15 Guests</option>
-                              <option value="16">16+ Guests</option>
-                          </select>
-                        </div>
-                      </div> -->
-                      <div class="col-md-2">
-                        <button type="submit" class="btn btn-default">Search <i class="fa fa-search"></i></button>
-                      </div>
-                    <% end %>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-<style>
-.carousel {
-  height: 500px;
-  margin-top: 0px;
-  margin-bottom: 10px;
-}
-.carousel .item {
-  height: 500px;
-  background-color: #777;
-}
-.carousel-inner > .item > img {
-  position: absolute;
-  top: 0;
-  left: 0;
-  min-width: 100%;
-  height: 500px;
-}
-.search {
- margin-top: -25%;
-}
-.search .form-section{
- background:rgba(0,0,0,0.6);
- border: 2px solid #414141;
- border-radius: 5px;
- padding: 30px;
-}
-</style>
+<div class="search">
+ <div class="container">
+   <div class="row">
+     <div class="col-md-12">
+       <div class="form-section">
+         <div class="row">
+             <%= form_tag(accomodations_path, :method => "get", class: "navbar-form", id: "search-form") do %>
+                 <%= text_field_tag :search, params[:search], class: "form-control", placeholder: "City" %>
+                 <button type="submit" class="btn btn-default btn-primary">Search <i class="fa fa-search"></i></button>
+             <% end %>
+         </div>
+       </div>
+     </div>
+   </div>
+ </div>
+</div>
