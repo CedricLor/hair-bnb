@@ -23,6 +23,6 @@ function onPlaceChanged() {
   }
 }
 
-google.maps.event.addDomListener(window, 'load', function() {
-  initializeAutocomplete('accomodation_address');
-});
+// google.maps.event.addDomListener(window, 'load', function() {
+//   initializeAutocomplete('accomodation_address');
+// });
