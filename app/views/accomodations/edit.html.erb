@@ -8,11 +8,22 @@
         <%= render 'shared/accomodation_form' %>
       </div>
     </div>
-  </div>
-  <div class="row">
     <div class="col-xs-12 col-sm-6 col-sm-offset-3">
-      <br><br>
-      <%= link_to "Back to Accomodation List", accomodations_path %>
+      <h1>
+        Delete photos
+      </h1>
+      <div id="presentation-box" class="card-block shadowed-box">
+         <%= render 'shared/accomodation_gallery' %>
+      </div>
+    </div>
+  </div>
+  <div class="col-xs-12 col-sm-6 col-sm-offset-3">
+      <h1>
+        Upload photos
+      </h1>
+      <div id="presentation-box" class="card-block shadowed-box">
+         <%= render 'shared/photo_form' %>
+      </div>
     </div>
   </div>
 </div>

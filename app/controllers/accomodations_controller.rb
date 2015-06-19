@@ -18,6 +18,7 @@ class AccomodationsController < ApplicationController
   end
 
   def edit
+    @accomodation = Accomodation.find(params[:id])
   end
 
   def index
