@@ -17,6 +17,16 @@
   <div id="myPersonalDataRow" class="row">
     <%= render "show_personal_data" %>
   </div>
+  <div id="myBookingsRow" class="row">
+    <div class="col-xs-12 col-sm-6 col-sm-offset-3">
+      <div id="myBookings">
+        <div id="bookingsBox" class="card-block shadowed-box">
+          <h3>My Bookings</h3>
+          <%= render "show_renter_bookings" %>
+        </div>
+      </div>
+    </div>
+  </div>
   <div id="myOwnedAccomodationsRow" class="row">
     <div class="col-xs-12 col-sm-6 col-sm-offset-3">
       <div id="ownedAccomodationsBox" class="card-block shadowed-box">
