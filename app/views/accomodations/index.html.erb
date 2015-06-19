@@ -6,11 +6,7 @@
         <div class="col-md-6 flat">
           <%= image_tag("flat_1.jpg", height: '180', width: '250') %>
           <p>
-            <% if params[:user_id].present? %>
-              <%= link_to(accomodation.description, user_accomodation_path(@user, accomodation)) %>
-            <% else %>
-              <%= link_to(accomodation.description, accomodation_path(accomodation)) %>
-            <% end %>
+            <%= link_to(accomodation.description, accomodation_path(accomodation)) %>
           </p>
           <p><span>€ </span><%= accomodation.night_rate %></p>
         </div>
