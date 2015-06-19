@@ -61,9 +61,9 @@ class AccomodationsController < ApplicationController
     params.require(:accomodation).permit(:accomodates, :description, :night_rate, :address, :locality, :street_number, :country, :route)
   end
 
-  # def set_user
-  #   @user = User.find(params[:user_id])
-  # end
+  def set_user
+    @user = User.find(params[:user_id])
+  end
 
   def set_accomodation
     @accomodation = Accomodation.find(params[:id])
