@@ -1,7 +1,7 @@
 <% @user_owned_accomodations.each do | accomodation | %>
   <div class="row my-accomodation-box text-left">
     <div class="col-xs-12 col-sm-6">
-      <%= image_tag("flat_1.jpg", height: '180', width: '250') %>
+      <%= image_tag(accomodation.photos.sample.picture.url(:medium), height: '180', width: '250') %>
     </div>
     <div class="col-xs-12 col-sm-6">
       <p><%= link_to accomodation.description, user_accomodation_path(@user, accomodation) %></p>

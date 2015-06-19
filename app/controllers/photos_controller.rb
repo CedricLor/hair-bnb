@@ -1,6 +1,6 @@
 class PhotosController < ApplicationController
-  #before_action :set_user, only: [:destroy]
-  before_action :set_accomodation, only: [:destroy]
+  before_action :set_user, only: [:destroy]
+  # before_action :set_accomodation, only: [:destroy]
 
   def new
   end
@@ -15,7 +15,8 @@ class PhotosController < ApplicationController
   def destroy
     @photo = Photo.find(params[:id])
     @photo.destroy
-    redirect_to @accomodation
+    redirect_to user_path(@user)
+    # redirect_to @accomodation
   end
 
   private
