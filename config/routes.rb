@@ -6,14 +6,17 @@ Rails.application.routes.draw do
   resources :users do
     # following line to be confirmed by David and on David's machine
     resources :photos, only: [:new, :create]
-    resources :accomodations do
+    # the following line is an owner route, not a regular user path
+    resources :accomodations, except: [:show] do
       resources :photos, only: [:new, :create]
-      resources :bookings, only: [:new, :index, :create]
+      resources :bookings, only: [:update, :edit, :index]
     end
   end
 
+  resources :booking, only: [:update]
+
   # anonymous navigation
-  resources :accomodations, only: [:index, :show] do
+  resources :accomodations, only: [:index, :show, :new] do
     resources :bookings, only: [:new, :index, :create]
     # TO DO: TO BE CONFIRMED ON DAVID'S MACHINE
     resources :photos, only: [:new, :create]
