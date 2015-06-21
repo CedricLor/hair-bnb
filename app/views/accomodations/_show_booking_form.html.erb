@@ -1,0 +1,37 @@
+<%= simple_form_for [@accomodation, @booking] do |f| %>
+  <%#= f.input :from, as: :date, start_year: Date.today.year,
+                        end_year: Date.today.year, discard_day: false,
+                        order: [:day, :month, :year] %>
+  <%#= f.input :to, as: :date, start_year: Date.today.year, start_day: Date.today + 1,
+                        end_year: Date.today.year, discard_day: false,
+                        order: [:day, :month, :year] %>
+
+  <%= f.input :from, as: :date, start_year: Date.today.year,
+                        end_year: Date.today.year, discard_day: false,
+                        order: [:day, :month, :year], html5: true, input_html: { class: "datepicker", id: "from"} %>
+  <%= f.input :to, as: :date, start_year: Date.today.year, start_day: Date.today + 1,
+                        end_year: Date.today.year, discard_day: false,
+                        order: [:day, :month, :year], html5: true, input_html: { class: "datepicker", id: "to"} %>
+  <%= f.button :submit, "Send booking request" %>
+<% end %>
+
+
+<% content_for(:after_js) do %>
+ <%= javascript_tag do %>
+  $(document).ready(function(){
+    $('#from').datepicker({
+      minDate: 0,
+      defaultDate: "+1w",
+      onClose: function( selectedDate ) {
+        $( "#to" ).datepicker( "option", "minDate", selectedDate );
+      }
+    });
+    $('#to').datepicker({
+      defaultDate: "+1w",
+      onClose: function( selectedDate ) {
+        $( "#from" ).datepicker( "option", "maxDate", selectedDate );
+      }
+    });
+  });
+ <% end %>
+<% end %>

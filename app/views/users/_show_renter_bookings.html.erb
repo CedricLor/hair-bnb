@@ -1,10 +1,16 @@
+<hr>
 <% @user.bookings.each do | booking | %>
   <div class="row my-booking-box text-left">
     <div class="col-xs-12 col-sm-6">
-      <%= image_tag("flat_1.jpg", height: '180', width: '250') %>
+
+      <% if booking.accomodation.photos.present? %>
+        <%= image_tag(booking.accomodation.photos.sample.picture.url(:medium), height: '180', width: '250') %>
+      <% else %>
+        <%= image_tag ("default.jpg"), height: '180', width: '250' %>
+      <% end %>
     </div>
     <div class="col-xs-12 col-sm-6">
-      <p>Which flat? <%= "#{booking.accomodation.description}" %></p>
+      <p>Which flat? <%= link_to "#{booking.accomodation.description}", accomodation_path(booking.accomodation) %></p>
       <p>Where? <%= "#{booking.accomodation.locality}, #{booking.accomodation.country}" %></p>
       <p>When? <%= "from #{booking.from.strftime("%F")} to #{booking.to.strftime("%F")}" %></p>
       <p>Cost? $
@@ -27,6 +33,7 @@
       </p>
     </div>
   </div>
+<hr>
 <% end %>
 
 <!-- /86400000 -->

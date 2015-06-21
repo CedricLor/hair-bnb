@@ -1,0 +1,11 @@
+<% @accomodation_bookings.each do |booking| %>
+  <div class="row">
+    <div class="col-xs-8">
+      <%= "From #{booking.from.strftime("%F")} to #{booking.to.strftime("%F")} " unless booking.reviewed == true && booking.accepted == false %>
+    </div>
+    <div class="col-xs-4">
+      <%= "Pending review" if booking.reviewed == false %>
+      <%= "Accepted" if booking.accepted == true %>
+    </div>
+  </div>
+<% end %>

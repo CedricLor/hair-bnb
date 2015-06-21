@@ -1,8 +1,9 @@
 source 'https://rubygems.org'
-source 'https://rails-assets.org' # required to download raisl-assets-underscore
+source 'https://rails-assets.org' # required to download rails-assets-underscore
 
 # Additional gemfiles for Heroku
 ruby '2.2.2'
+
 gem 'rails_12factor', group: :production
 gem 'puma',           group: :production
 
@@ -59,6 +60,8 @@ gem 'paperclip'
 gem 'geocoder'
 gem 'gmaps4rails'
 gem 'rails-assets-underscore'
+
+gem 'jquery-ui-rails'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

@@ -1,0 +1,28 @@
+<h4><%= @accomodation.description %></h4>
+<p><%= "#{@accomodation.locality}, #{@accomodation.country}" %><p>
+<p>Ratings:
+  <i class="fa fa-star"></i>
+  <i class="fa fa-star"></i>
+  <i class="fa fa-star"></i>
+  <i class="fa fa-star"></i>
+  <i class="fa fa-star-o"></i>(19)
+</p>
+<p>Rate per night: € <%= @accomodation.night_rate %></p>
+<ul class="list-unstyled list-inline">
+  <li>
+    <i class="fa fa-home"></i>
+    Entire home/apt
+  </li>
+  <li>
+    <i class="fa fa-user"></i>
+    <span><%= @accomodation.accomodates %></span> Guests
+  </li>
+  <li>
+    <i class="fa fa-building"></i>
+    1 Bedroom
+  </li>
+  <li>
+    <i class="fa fa-bed"></i>
+    1 Bed
+  </li>
+</ul>
