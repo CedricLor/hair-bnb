@@ -11,7 +11,7 @@
 // about supported directives.
 // IN SEARCH OF THE NAVBAR BUG
 // FOLLOWING LINE HAD BEEN COMMENTED OUT BY SIMON
-// //= require bootstrap-sprockets
+// require bootstrap-sprockets
 //
 // app/assets/javascripts/application.js
 //
@@ -19,7 +19,6 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap
-
 //= require underscore
 //= require gmaps/google
 //= require jquery-ui
