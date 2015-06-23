@@ -1,0 +1,19 @@
+<hr>
+<div class="media">
+  <% @accomodation.flat_reviews.each do | review | %>
+  <div class="media-left">
+
+  </div>
+  <div class="media-body">
+      <h4 class="media-heading">Rating: <%= review.rating %></h4>
+      <p><%= review.content %></p>
+  </div>
+  <hr>
+  <% end %>
+</div>
+<%= simple_form_for [@accomodation, @new_flat_review] do |f| %>
+  <%= f.error_notification %>
+  <%= f.input :content %>
+  <%= f.input :rating, collection: 0..5, as: :radio_buttons, wrapper_html: { class: 'inline-radio-buttons' } %>
+  <%= f.button :submit, class:"btn btn-default" %>
+<% end %>

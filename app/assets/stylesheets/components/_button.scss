@@ -1,3 +1,14 @@
 /* -------------------------------------
  * You killer button SASS module
  * ------------------------------------- */
+
+.inline-radio-buttons {
+  .control-label {
+    margin-right: 15px;
+  }
+  .radio, span.radio:last-child {
+    display: inline;
+    float: none;
+    margin-right: 10px;
+  }
+}

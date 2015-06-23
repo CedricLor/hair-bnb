@@ -4,10 +4,10 @@
   <%= "Confirmation status:"%>
   <% if @booking.accepted == false %>
     <%= "pending" %>
-    <%= simple_form_for(@booking, html: { multipart: true }) do |f| %>
+    <%= simple_form_for(@booking) do |f| %>
       <%= f.error_notification %>
-      <%= f.input :accepted, as: :boolean %>
-      <%= f.button :submit %>
+      <%= f.input :accepted, label_html: { class: 'soften-label' }, label: 'Please accept or reject this booking request', wrapper_html: { class: 'inline-radio-buttons' }, as: :radio_buttons %>
+      <%= f.button :submit, "Send your answer" %>
     <% end %>
   <% else %>
     <%= "accepted" %>

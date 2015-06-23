@@ -1,0 +1,118 @@
+<div class="row">
+  <div class="col-xs-12 text-center">
+    <div id="myDatePicker">
+      <style>
+        .ui-datepicker-inline {
+          width: 13em !important;
+          font-family: roboto;
+          margin: auto;
+        }
+      </style>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-12">
+    <%= simple_form_for [@accomodation, @booking] do |f| %>
+      <%= f.input :from, as: :string, input_html: { class: "myDateReceivers", id: "myFrom"} %>
+      <%= f.input :to, as: :string, input_html: { class: "myDateReceivers", id: "myTo"} %>
+      <%= f.button :submit, "Send booking request" %>
+    <% end %>
+  </div>
+</div>
+
+<style>
+  .dp-highlight .ui-state-default {
+    background: #484;
+    color: #FFF;
+  }
+</style>
+
+<% content_for(:after_js) do %>
+  <%= javascript_tag do %>
+    $(document).ready(function(){
+
+      // Load the list of bookings into a ruby array
+      <% array_of_bookings = [] %>
+      <% i = 0 %>
+      <% @accomodation_bookings.each do |booking| %>
+        <% if booking.reviewed == false || booking.accepted == true %>
+          <% booking_as_an_array = ["#{booking.from.strftime("%F")}", "#{booking.to.strftime("%F")}"] %>
+          <% array_of_bookings << booking_as_an_array %>
+        <% end %>
+      <% end %>
+
+      // Passing the ruby array to Javascript
+      var array_of_bookings = <%=raw array_of_bookings.to_json %>;
+
+      // Module that is disabling cells which correpond to a pending or an approved booking
+      // No longer in use, but kept for future references
+      function disableDates () {
+        $( "td:not(.ui-datepicker-unselectable)" ).each( function() {
+          var thisDate = new Date( $(this).attr("data-year"), $(this).attr("data-month"), $(this).children("a").text() );
+          var thisDateCell = $(this);
+          $(array_of_bookings).each( function () {
+            startDate = new Date( $(this)[0] );
+            endDate = new Date( $(this)[1] );
+            if ((thisDate == startDate) || (thisDate == endDate) || ((thisDate > startDate) && (thisDate < endDate))) {
+              thisDateCell.addClass(" ui-datepicker-unselectable ui-state-disabled ");
+              thisDateCell.attr({"data-handler": "", "data-event": ""});
+              if ($(this).children("a").length != 0) {
+                span = $("<span class='ui-state-default'></span>").text(thisDateCell.children("a").text());
+                thisDateCell.prepend(span).children("a").remove();
+              }
+            }
+          });
+        });
+      }
+
+      // Initialize a today variable
+      var today = new Date (<%= Date.today.year %>, <%= Date.today.month - 1 %>, <%= Date.today.day %>);
+
+      // Designing the basic datepicker
+      $( "#myDatePicker" ).datepicker({
+        firstDay: 1,
+        minDate: today,
+        beforeShowDay: function(date) {
+          // Part of the beforeShowDay needed to grey out the already booked dates
+          var responseArr = [];
+          responseArr[0] = true;
+          $(array_of_bookings).each( function () {
+            startDate = new Date( $(this)[0] );
+            endDate = new Date( $(this)[1] );
+            if ((date == startDate) || (date == endDate) || ((date > startDate) && (date < endDate))) {
+              responseArr[0] = false;
+            }
+          });
+          // Part of the beforeShowDay needed for the multi-select
+          var fromString = $("#myFrom").val();
+          var toString = $("#myTo").val();
+          var date1 = $.datepicker.parseDate("mm/dd/yy", fromString);
+          var date2 = $.datepicker.parseDate("mm/dd/yy", toString);
+          responseArr[1] = date1 && ((date.getTime() == date1.getTime()) || (date2 && date >= date1 && date <= date2)) ? "dp-highlight" : "";
+          return responseArr;
+        },
+        onSelect: function(dateText, inst) {
+          var fromString = $("#myFrom").val();
+          var toString = $("#myTo").val();
+          var date1 = $.datepicker.parseDate("mm/dd/yy", fromString);
+          var date2 = $.datepicker.parseDate("mm/dd/yy", toString);
+          var selectedDate = $.datepicker.parseDate($.datepicker._defaults.dateFormat, dateText);
+
+          if (!date1 || date2) {
+            $("#myFrom").val(dateText);
+            $("#myTo").val("");
+            $(this).datepicker();
+          } else if( selectedDate < date1 ) {
+            $("#myTo").val( $("#myFrom").val() );
+            $("#myFrom").val( dateText );
+            $(this).datepicker();
+          } else {
+            $("#myTo").val(dateText);
+            $(this).datepicker();
+          }
+        }
+      });
+    });
+  <% end %>
+<% end %>

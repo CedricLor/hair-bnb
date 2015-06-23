@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   devise_for :users
 
   # navigation as a given user
+  # resources :users, only: [:new, :create, :edit, :update]
   resources :users do
     # following line to be confirmed by David and on David's machine
     # resources :photos, only: [:new, :create] # => not used anymore
@@ -24,11 +25,6 @@ Rails.application.routes.draw do
   end
 
   resources :photos, only: [:destroy] # DO NOT CHANGE THIS ROUTE
-
-  # TO DO: TO BE CONFIRMED ON DAVID'S MACHINE
-  # resources :accomodations do
-  #   resources :photos, only: [:new, :create]
-  # end
 
   # root 'static_pages#home'
   root 'welcome#index'

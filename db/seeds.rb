@@ -5,8 +5,8 @@ users = User.create([
   { first_name: 'Kevin', last_name: 'Bridges', email: 'kevin.bridges@gmail.Com', encrypted_password: 'azertyuiop', sign_in_count: 0, description: 'Donec sed odio dui. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.'}
 ])
 accomodations = Accomodation.create([
-  { description: 'Nicest flat ever', night_rate: '40', accomodates: '20', address: '18 Passage Montmartre, 75018 Paris', user_id: 1 },
-  { description: 'Worst flat ever', night_rate: '50', accomodates: '6', address: '10 Passage Lathuille, 75018 Paris', user_id: 2 },
-  { description: 'Flowery ceiling', night_rate: '20', accomodates: '4', address: '20 Rue de la Paix, 75016 Paris', user_id: 2},
-  { description: "David's Hairy Flat", night_rate: '200', accomodates: '2', address: '3 rue du Delta, 75009 Paris', user_id: 2}
+  { description: 'Nicest flat ever', night_rate: '40', accomodates: '20', address: '18 Passage Montmartre, 75018 Paris', locality: "Paris", country: "France", user_id: 1 },
+  { description: 'Worst flat ever', night_rate: '50', accomodates: '6', address: '10 Passage Lathuille, 75018 Paris', locality: "Paris", country: "France", user_id: 2 },
+  { description: 'Flowery ceiling', night_rate: '20', accomodates: '4', address: '20 Rue de la Paix, 75016 Paris', locality: "Paris", country: "France", user_id: 2 },
+  { description: "David's Hairy Flat", night_rate: '200', accomodates: '2', address: '3 rue du Delta, 75009 Paris', locality: "Paris", country: "France", user_id: 2 }
 ])

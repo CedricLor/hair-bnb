@@ -1,6 +1,12 @@
 <div class="container">
   <div class="row">
-    <p><%=  link_to "Update this accomodation", edit_user_accomodation_path(@user, @accomodation) , class: "btn btn-default btn-sm" %></p>
+    <p>
+      <!-- Update accomodation button (only available in the case where the user is the owner) -->
+      <% if current_user.id == @accomodation.user_id %>
+      <%# if current_user.id == @accomodation.user.id %>
+        <%= link_to "Update this accomodation", edit_user_accomodation_path(@user, @accomodation) , class: "btn btn-default btn-sm" %>
+      <% end %>
+    </p>
   </div>
   <div class="row">
     <div class="col-xs-12 col-sm-12">
@@ -14,74 +20,33 @@
   <!-- TO DO: Remove <br><br> and replace with smart CSS -->
   <br><br>
   <div class="row">
-      <!-- High level description -->
     <div class="col-xs-12 col-sm-offset-2 col-sm-4">
-      <div class="row">
-        <div class="col-xs-11">
-          <div class="card-block shadowed-box">
-            <h3>About The Owner</h3>
-            <p class="text-center">
-              <!-- TO DO David: Update profile picture of the owner -->
-              <%= image_tag(@accomodation.user.picture.url(:medium), class: "img-circle", height: "50") %>
-              <!-- TO DO: Align properly with smart CSS -->
-              <br><%= "#{@owner.first_name} #{@owner.last_name}" %>
-            </p>
-            <p class="text-center">Ratings: <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-o"></i>(1908)</p>
-            <p class="text-center">
-              <%= mail_to "me@domain.com", "Email-me", class: "btn btn-default" %>
-            </p>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-xs-11">
-          <div class="card-block shadowed-box">
-            <h4><%= @accomodation.description %></h4>
-            <p><%= "#{@accomodation.locality}, #{@accomodation.country}" %><p>
-            <p>Ratings:
-              <i class="fa fa-star"></i>
-              <i class="fa fa-star"></i>
-              <i class="fa fa-star"></i>
-              <i class="fa fa-star"></i>
-              <i class="fa fa-star-o"></i>(19)
-            </p>
-            <p>Rate per night: € <%= @accomodation.night_rate %></p>
-            <ul class="list-unstyled list-inline">
-              <li>
-                <i class="fa fa-home"></i>
-                Entire home/apt
-              </li>
-              <li>
-                <i class="fa fa-user"></i>
-                <span><%= @accomodation.accomodates %></span> Guests
-              </li>
-              <li>
-                <i class="fa fa-building"></i>
-                1 Bedroom
-              </li>
-              <li>
-                <i class="fa fa-bed"></i>
-                1 Bed
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
       <!--  Owner description -->
       <div class="row">
         <div class="col-xs-11">
           <div class="card-block shadowed-box">
             <h3>About The Owner</h3>
             <p class="text-center">
-              <!-- TO DO David: Update profile picture of the owner -->
-              <%= image_tag("beard1.jpg", class: "img-circle", height: "50") %>
-              <!-- TO DO: Align properly with smart CSS -->
+              <%= image_tag(@owner.picture.url(:medium), class: "img-circle", height: "50") %>
               <br><%= "#{@owner.first_name} #{@owner.last_name}" %>
             </p>
-            <p class="text-center">Ratings: <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-o"></i>(1908)</p>
-            <p class="text-center">
-              <%= mail_to "me@domain.com", "Email-me", class: "btn btn-default" %>
+            <p class="text-center">Ratings:
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star-o"></i>(1908)
             </p>
+            <p class="text-center">
+              <%= mail_to @owner.email, "Email-me", class: "btn btn-default btn-sm" %>
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-11">
+          <div class="card-block shadowed-box">
+            <%= render "show_overview_box" %>
           </div>
         </div>
       </div>
@@ -91,39 +56,8 @@
       <div class="row">
         <div class="col-xs-11">
           <div class="card-block shadowed-box">
-            <h3 class="text-center">Booked Dates</h3>
-            <% @accomodation_bookings.each do |booking| %>
-              <div class="row">
-                <div class="col-xs-8">
-                  <%= "From #{booking.from.strftime("%F")} to #{booking.to.strftime("%F")} " %>
-                </div>
-                <div class="col-xs-4">
-                  <% if booking.reviewed == false %>
-                    <%= "Pending review" %>
-                  <% else %>
-                    <% if booking.accepted == true %>
-                      <%= "Accepted" %>
-                    <% end %>
-                  <% end %>
-                </div>
-              </div>
-            <% end %>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-xs-11">
-          <div class="card-block shadowed-box">
             <h3 class="text-center">Book</h3>
-              <%= simple_form_for [@accomodation, @booking] do |f| %>
-                <%= f.input :from, as: :date, start_year: Date.today.year,
-                                      end_year: Date.today.year, discard_day: false,
-                                      order: [:day, :month, :year] %>
-                <%= f.input :to, as: :date, start_year: Date.today.year + 1,
-                                      end_year: Date.today.year, discard_day: false,
-                                      order: [:day, :month, :year] %>
-                <%= f.button :submit %>
-            <% end %>
+            <%= render "show_unavailable_dates" %>
           </div>
         </div>
       </div>
@@ -146,90 +80,21 @@
       <div class="row">
         <div class="col-xs-11">
           <div class="card-block shadowed-box">
-            <div class="row">
-              <h3>About This Accomodation</h3>
-              <div class="col-xs-12 col-md-2">
-                The Space
-              </div>
-              <div class="col-xs-12 col-md-4">
-                <div class="row">
-                  <div class="col-xs-12">
-                    Bed type: Pull-out Sofa
-                  </div>
-                  <div class="col-xs-12">
-                    Bedrooms: 1
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-xs-12 col-md-2">
-                Amenities
-              </div>
-              <div class="col-xs-12 col-md-4">
-                <div class="row">
-                  <div class="col-xs-12">
-                    Kitchen
-                  </div>
-                  <div class="col-xs-12">
-                    Free Parking
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-xs-12 col-md-2">
-                Prices
-              </div>
-              <div class="col-xs-12 col-md-4">
-                <div class="row">
-                  <div class="col-xs-12">
-                    Extra people: No Charge
-                  </div>
-                  <div class="col-xs-12">
-                    Cancellation: Moderate
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-xs-12 col-md-2">
-                Description
-              </div>
-              <div class="col-xs-12 col-md-8">
-                Studio de 20m² refait à neuf.
-                Il donne coté cour. Il se situe à 15 min de République à pied, 200m du métro ainsi que d'une station V'lille.
-                Nous serons ravis de vous accueillir chez nous. Comptez sur nous pour vous donner quelques adresses en ville.
-              </div>
-            </div>
+            <%= render "show_detailled_description" %>
           </div>
         </div>
       </div>
     </div>
   </div>
   <div class="row">
-    <div class="col-xs-12 col-sm-12">
-      <div class="card-block shadowed-box">
-        <h3>Accomodation Reviews</h3>
-        <hr>
-        <div class="media">
-          <% @accomodation.flat_reviews.each do | review | %>
-          <div class="media-left">
-
+    <div class="col-sm-offset-2 col-sm-9">
+      <div class="row">
+        <div class="col-xs-11">
+          <div class="card-block shadowed-box">
+            <h3>Accomodation Reviews</h3>
+            <%= render "show_accomodation_review_form" %>
           </div>
-          <div class="media-body">
-              <h4 class="media-heading">Rating: <%= review.rating %></h4>
-              <p><%= review.content %></p>
-          </div>
-          <hr>
-          <% end %>
         </div>
-        <%= simple_form_for [@accomodation, @new_flat_review] do |f| %>
-          <%= f.error_notification %>
-          <%= f.input :content %>
-          <%= f.input :rating %>
-          <%= f.button :submit, class:"btn btn-default" %>
-        <% end %>
       </div>
     </div>
   </div> <!-- row -->

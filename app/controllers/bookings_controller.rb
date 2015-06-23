@@ -1,3 +1,5 @@
+require 'date'
+
 class BookingsController < ApplicationController
   before_action :set_user, only: [:create, :update, :destroy]
   before_action :set_accomodation, only: [:create]
@@ -5,14 +7,13 @@ class BookingsController < ApplicationController
 
   def create
     @booking = @accomodation.bookings.build(renter_booking_params)
+    @booking.from = Date.strptime(params[:booking][:from], '%m/%d/%Y')
+    @booking.to = Date.strptime(params[:booking][:to], '%m/%d/%Y')
     @booking.user_id = @user.id
     @booking.accepted = false
     @booking.reviewed = false
-    @booking.save
+    flash[:alert] = "Your booking request could not be accepted! This is usually due to invalid data being selected. Please review the dates of your booking." unless @booking.save
     redirect_to accomodation_path(@accomodation)
-  end
-
-  def new
   end
 
   def edit

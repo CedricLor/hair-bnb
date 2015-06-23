@@ -1,3 +1,15 @@
 /* -------------------------------------
  * You killer form SASS module
  * ------------------------------------- */
+
+  .soften-label {
+    font-weight: 300;
+    letter-spacing: 0.7pt;
+    color: rgba(90, 100, 125, 0.8);
+    line-height: 1.2em;
+    font-size: 16px;
+  }
+
+  .small-size-select {
+    width: 40px;
+  }
